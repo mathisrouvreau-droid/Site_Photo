@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>À propos — MR VISUALS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="page-about">
+    <div class="grain-overlay" aria-hidden="true"></div>
+
+    <!-- Navigation -->
+    <nav class="nav nav--solid" id="nav">
+        <a href="index.html" class="nav__logo"><img src="logo/Logo minimaliste _MR VISUALS_ en noir et blanc.png" alt="MR VISUALS"></a>
+        <button class="nav__burger" id="navBurger" aria-label="Menu">
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="nav__links" id="navLinks">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="gallery.html">Galerie</a></li>
+            <li><a href="about.html" class="active">À propos</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- About Header -->
+    <header class="page-header">
+        <div class="container">
+            <span class="section-label reveal-up">L'histoire</span>
+            <h1 class="page-header__title reveal-up" style="--delay: 0.1s">À propos</h1>
+        </div>
+    </header>
+
+    <!-- About Content -->
+    <section class="about">
+        <div class="container">
+            <div class="about__grid">
+                <div class="about__images reveal-on-scroll">
+                    <div class="about__image">
+                        <div class="about__image-wrapper">
+                            <img src="images/DSC_8826.jpeg" alt="MR VISUALS - Mathis">
+                        </div>
+                        <div class="about__image-accent"></div>
+                    </div>
+                    <div class="about__image about__image--second reveal-on-scroll" style="--delay: 0.2s">
+                        <div class="about__image-wrapper">
+                            <img src="images/IMG_9961.jpeg" alt="MR VISUALS - Appareil photo">
+                        </div>
+                    </div>
+                </div>
+                <div class="about__text">
+                    <h2 class="about__name reveal-on-scroll">Derrière l'objectif</h2>
+                    <div class="about__divider reveal-on-scroll"></div>
+                    <p class="about__bio reveal-on-scroll">
+                        Passionné par l'image depuis toujours, je capture les moments qui racontent
+                        une histoire. Du terrain de golf aux parquets de basket, en passant par
+                        l'intimité d'un portrait, chaque cliché est une quête de l'instant parfait.
+                    </p>
+                    <p class="about__bio reveal-on-scroll">
+                        Mon approche se veut authentique et spontanée. Je cherche à révéler
+                        l'émotion brute, la beauté dans le mouvement, la poésie dans le quotidien.
+                        Chaque séance est une rencontre, chaque photo un dialogue silencieux.
+                    </p>
+                    <h2 class="about__name reveal-on-scroll">Mon matériel</h2>
+                    <div class="about__divider reveal-on-scroll"></div>
+                    <p class="about__bio reveal-on-scroll">
+                        Je shoote avec un <strong>Fujifilm X-H2</strong>, un boîtier hybride
+                        qui allie résolution et réactivité. Couplé à mon objectif
+                        <strong>Fujinon XF 50-140mm F2.8 R LM OIS WR</strong>, il me permet
+                        de capturer aussi bien les détails d'un swing sur le green que
+                        l'intensité d'un match de basket, avec un bokeh crémeux et une
+                        netteté redoutable.
+                    </p>
+                    <div class="about__stats reveal-on-scroll">
+                        <div class="about__stat">
+                            <span class="about__stat-num">4</span>
+                            <span class="about__stat-label">Collections</span>
+                        </div>
+                        <div class="about__stat">
+                            <span class="about__stat-num">Golf</span>
+                            <span class="about__stat-label">Portrait &middot; Basket &middot; Nature</span>
+                        </div>
+                    </div>
+                    <a href="contact.html" class="about__cta reveal-on-scroll">
+                        <span>Me contacter</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer__inner">
+            <a href="index.html" class="footer__logo">MR VISUALS</a>
+            <p class="footer__copy">&copy; 2026 MR VISUALS. Tous droits réservés.</p>
+            <div class="footer__socials">
+                <a href="https://www.instagram.com/mpict_rv12/" target="_blank" aria-label="Instagram">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+                </a>
+                <a href="#" aria-label="LinkedIn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 10v7M7 7v.01M11 10v7m0-4c0-2 1.5-3 3-3s3 1 3 3v4"/></svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

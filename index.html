@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MR VISUALS — Photographie</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="page-home">
+    <!-- Film grain overlay -->
+    <div class="grain-overlay" aria-hidden="true"></div>
+
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <a href="index.html" class="nav__logo"><img src="logo/Logo minimaliste _MR VISUALS_ en noir et blanc.png" alt="MR VISUALS"></a>
+        <button class="nav__burger" id="navBurger" aria-label="Menu">
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="nav__links" id="navLinks">
+            <li><a href="index.html" class="active">Accueil</a></li>
+            <li><a href="gallery.html">Galerie</a></li>
+            <li><a href="about.html">À propos</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero__bg">
+            <img src="images/DSC_8825.jpeg" alt="" class="hero__img">
+        </div>
+        <div class="hero__content">
+            <span class="hero__overtitle reveal-up">Photographe</span>
+            <h1 class="hero__title">
+                <span class="reveal-up" style="--delay: 0.15s">MR</span> <span class="reveal-up accent" style="--delay: 0.25s">VI</span><span class="reveal-up" style="--delay: 0.35s">SUALS</span>
+            </h1>
+            <p class="hero__subtitle reveal-up" style="--delay: 0.55s">Capturer l'instant, sublimer l'émotion</p>
+            <a href="gallery.html" class="hero__cta reveal-up" style="--delay: 0.75s">
+                <span>Découvrir</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+        </div>
+        <div class="hero__scroll reveal-up" style="--delay: 1s">
+            <div class="hero__scroll-line"></div>
+            <span>Scroll</span>
+        </div>
+    </section>
+
+    <!-- Featured section -->
+    <section class="featured">
+        <div class="container">
+            <span class="section-label reveal-on-scroll">Collections</span>
+            <h2 class="section-title reveal-on-scroll">Galeries sélectionnées</h2>
+            <div class="featured__grid">
+                <a href="gallery.html#golf" class="featured__card reveal-on-scroll">
+                    <div class="featured__card-img">
+                        <img src="images/golf/DSCF0734.jpg" alt="Golf">
+                    </div>
+                    <div class="featured__card-content">
+                        <span class="featured__card-num">01</span>
+                        <h3>Golf</h3>
+                        <p>L'élégance du green</p>
+                    </div>
+                </a>
+                <a href="gallery.html#portrait" class="featured__card reveal-on-scroll" style="--delay: 0.15s">
+                    <div class="featured__card-img">
+                        <img src="images/portrait/DSCF0317.jpeg" alt="Portrait">
+                    </div>
+                    <div class="featured__card-content">
+                        <span class="featured__card-num">02</span>
+                        <h3>Portrait</h3>
+                        <p>L'âme du regard</p>
+                    </div>
+                </a>
+                <a href="gallery.html#nature" class="featured__card reveal-on-scroll" style="--delay: 0.3s">
+                    <div class="featured__card-img">
+                        <img src="images/nature/DSCF0170.jpg" alt="Nature">
+                    </div>
+                    <div class="featured__card-content">
+                        <span class="featured__card-num">03</span>
+                        <h3>Nature</h3>
+                        <p>La beauté du monde</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer__inner">
+            <a href="index.html" class="footer__logo">MR VISUALS</a>
+            <p class="footer__copy">&copy; 2026 MR VISUALS. Tous droits réservés.</p>
+            <div class="footer__socials">
+                <a href="https://www.instagram.com/mpict_rv12/" target="_blank" aria-label="Instagram">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+                </a>
+                <a href="#" aria-label="LinkedIn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 10v7M7 7v.01M11 10v7m0-4c0-2 1.5-3 3-3s3 1 3 3v4"/></svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

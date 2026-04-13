@@ -27,71 +27,143 @@
         </ul>
     </nav>
 
-    <!-- Contact Header -->
-    <header class="page-header">
+    <!-- Contact Hero -->
+    <header class="contact-hero">
         <div class="container">
-            <span class="section-label reveal-up">Collaborons</span>
-            <h1 class="page-header__title reveal-up" style="--delay: 0.1s">Contact</h1>
+            <div class="contact-hero__status reveal-up">
+                <span class="contact-hero__dot" aria-hidden="true"></span>
+                <span>Disponible pour de nouveaux projets</span>
+            </div>
+            <h1 class="contact-hero__title reveal-up" style="--delay: 0.1s">
+                <em>Chaque&nbsp;</em>instant<br>
+                mérite d'être <em>capturé.</em>
+            </h1>
+            <p class="contact-hero__lede reveal-up" style="--delay: 0.2s">
+                Un événement sportif, un portrait, une idée qui vous trotte dans la tête&nbsp;?
+                Écrivez-moi — je réponds sous 48&nbsp;heures.
+            </p>
         </div>
     </header>
 
-    <!-- Contact Content -->
-    <section class="contact">
+    <!-- Service Cards -->
+    <section class="services">
         <div class="container">
-            <div class="contact__grid">
-                <div class="contact__info reveal-on-scroll">
-                    <h2 class="contact__heading">Envie de travailler ensemble ?</h2>
-                    <p class="contact__text">
-                        Que ce soit pour un événement sportif, une séance portrait ou tout
-                        autre projet photo, n'hésitez pas à me contacter.
-                    </p>
-                    <div class="contact__details">
-                        <div class="contact__detail">
-                            <span class="contact__detail-label">Email</span>
-                            <a href="mailto:mathis.rouvreau@gmail.com">mathis.rouvreau@gmail.com</a>
+            <div class="services__header">
+                <span class="section-label reveal-on-scroll">01 — Choisissez un type de projet</span>
+            </div>
+            <div class="services__grid">
+                <button class="service-card reveal-on-scroll" data-subject="event" style="--delay: 0.05s">
+                    <span class="service-card__num">01</span>
+                    <span class="service-card__title">Sport</span>
+                    <span class="service-card__desc">Golf, basket, compétitions &amp; événements sportifs.</span>
+                    <span class="service-card__arrow" aria-hidden="true">→</span>
+                </button>
+                <button class="service-card reveal-on-scroll" data-subject="portrait" style="--delay: 0.1s">
+                    <span class="service-card__num">02</span>
+                    <span class="service-card__title">Portrait</span>
+                    <span class="service-card__desc">Séances individuelles, couples, familles, pros.</span>
+                    <span class="service-card__arrow" aria-hidden="true">→</span>
+                </button>
+                <button class="service-card reveal-on-scroll" data-subject="collab" style="--delay: 0.15s">
+                    <span class="service-card__num">03</span>
+                    <span class="service-card__title">Collaboration</span>
+                    <span class="service-card__desc">Marques, clubs, créateurs &amp; projets éditoriaux.</span>
+                    <span class="service-card__arrow" aria-hidden="true">→</span>
+                </button>
+                <button class="service-card reveal-on-scroll" data-subject="other" style="--delay: 0.2s">
+                    <span class="service-card__num">04</span>
+                    <span class="service-card__title">Autre</span>
+                    <span class="service-card__desc">Une idée hors-cadre&nbsp;? Parlons-en.</span>
+                    <span class="service-card__arrow" aria-hidden="true">→</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Main -->
+    <section class="contact-main">
+        <div class="container">
+            <div class="contact-main__grid">
+                <!-- Left: info panel -->
+                <aside class="contact-side reveal-on-scroll">
+                    <span class="section-label">02 — Ou directement</span>
+
+                    <a href="mailto:mathis.rouvreau@gmail.com" class="contact-card">
+                        <span class="contact-card__label">Email</span>
+                        <span class="contact-card__value">mathis.rouvreau<br>@gmail.com</span>
+                        <span class="contact-card__arrow" aria-hidden="true">→</span>
+                    </a>
+
+                    <div class="contact-meta">
+                        <div class="contact-meta__row">
+                            <span class="contact-meta__label">Basé à</span>
+                            <span class="contact-meta__value">Mortagne-sur-Sèvre<br><span class="contact-meta__sub">Vendée · France</span></span>
                         </div>
-                        <div class="contact__detail">
-                            <span class="contact__detail-label">Basé à</span>
-                            <span>Mortagne-sur-Sèvre, Vendée</span>
+                        <div class="contact-meta__row">
+                            <span class="contact-meta__label">Réponse</span>
+                            <span class="contact-meta__value">Sous 48&nbsp;h<br><span class="contact-meta__sub">Du lundi au samedi</span></span>
+                        </div>
+                        <div class="contact-meta__row">
+                            <span class="contact-meta__label">Zone</span>
+                            <span class="contact-meta__value">Grand&nbsp;Ouest<br><span class="contact-meta__sub">Déplacements possibles</span></span>
                         </div>
                     </div>
-                    <div class="contact__socials">
-                        <a href="https://www.instagram.com/mpict_rv12/" target="_blank" class="contact__social">Instagram</a>
-                        <a href="https://www.linkedin.com/in/mathis-rouvreau-aa6096305/" target="_blank" class="contact__social">LinkedIn</a>
+
+                    <div class="contact-follow">
+                        <span class="contact-follow__label">Suivre le travail</span>
+                        <div class="contact-follow__links">
+                            <a href="https://www.instagram.com/mpict_rv12/" target="_blank" rel="noopener">Instagram<span aria-hidden="true">↗</span></a>
+                            <a href="https://www.linkedin.com/in/mathis-rouvreau-aa6096305/" target="_blank" rel="noopener">LinkedIn<span aria-hidden="true">↗</span></a>
+                        </div>
                     </div>
+                </aside>
+
+                <!-- Right: form -->
+                <div class="contact-form-wrap reveal-on-scroll" style="--delay: 0.15s">
+                    <span class="section-label">03 — Racontez-moi</span>
+                    <form class="contact__form" id="contactForm" novalidate>
+                        <div class="form-row">
+                            <div class="form__group form__group--float">
+                                <input type="text" id="name" name="name" class="form__input" required autocomplete="name" placeholder=" ">
+                                <label for="name" class="form__label-float">Votre nom</label>
+                                <div class="form__line"></div>
+                            </div>
+                            <div class="form__group form__group--float">
+                                <input type="email" id="email" name="email" class="form__input" required autocomplete="email" placeholder=" ">
+                                <label for="email" class="form__label-float">Votre email</label>
+                                <div class="form__line"></div>
+                            </div>
+                        </div>
+
+                        <div class="form__group form__group--float">
+                            <span class="form__label-static">Type de projet</span>
+                            <div class="form__pills" role="radiogroup" aria-label="Type de projet">
+                                <input type="radio" name="subject" id="pill-event" value="event" required>
+                                <label for="pill-event" class="form__pill">Sport</label>
+                                <input type="radio" name="subject" id="pill-portrait" value="portrait">
+                                <label for="pill-portrait" class="form__pill">Portrait</label>
+                                <input type="radio" name="subject" id="pill-collab" value="collab">
+                                <label for="pill-collab" class="form__pill">Collab</label>
+                                <input type="radio" name="subject" id="pill-other" value="other">
+                                <label for="pill-other" class="form__pill">Autre</label>
+                            </div>
+                        </div>
+
+                        <div class="form__group form__group--float">
+                            <textarea id="message" name="message" class="form__input form__textarea" rows="5" required placeholder=" "></textarea>
+                            <label for="message" class="form__label-float">Parlez-moi de votre projet…</label>
+                            <div class="form__line"></div>
+                        </div>
+
+                        <div class="form__footer">
+                            <span class="form__note">En envoyant, vous acceptez d'être recontacté par email.</span>
+                            <button type="submit" class="form__submit">
+                                <span>Envoyer le message</span>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </button>
+                        </div>
+                    </form>
                 </div>
-                <form class="contact__form reveal-on-scroll" style="--delay: 0.15s" id="contactForm">
-                    <div class="form__group">
-                        <label for="name" class="form__label">Nom</label>
-                        <input type="text" id="name" name="name" class="form__input" required autocomplete="name">
-                        <div class="form__line"></div>
-                    </div>
-                    <div class="form__group">
-                        <label for="email" class="form__label">Email</label>
-                        <input type="email" id="email" name="email" class="form__input" required autocomplete="email">
-                        <div class="form__line"></div>
-                    </div>
-                    <div class="form__group">
-                        <label for="subject" class="form__label">Sujet</label>
-                        <select id="subject" name="subject" class="form__input form__select" required>
-                            <option value="" disabled selected>Choisir un sujet</option>
-                            <option value="event">Événement sportif</option>
-                            <option value="portrait">Séance portrait</option>
-                            <option value="collab">Collaboration</option>
-                            <option value="other">Autre</option>
-                        </select>
-                        <div class="form__line"></div>
-                    </div>
-                    <div class="form__group">
-                        <label for="message" class="form__label">Message</label>
-                        <textarea id="message" name="message" class="form__input form__textarea" rows="5" required></textarea>
-                        <div class="form__line"></div>
-                    </div>
-                    <button type="submit" class="form__submit">
-                        <span>Envoyer</span>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    </button>
-                </form>
             </div>
         </div>
     </section>
@@ -113,5 +185,19 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <script>
+        // Service cards pre-fill the form
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const subject = card.dataset.subject;
+                const radio = document.querySelector(`input[name="subject"][value="${subject}"]`);
+                if (radio) radio.checked = true;
+                document.querySelectorAll('.service-card').forEach(c => c.classList.remove('is-active'));
+                card.classList.add('is-active');
+                document.getElementById('contactForm').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                setTimeout(() => document.getElementById('name').focus(), 600);
+            });
+        });
+    </script>
 </body>
 </html>

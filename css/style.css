@@ -967,6 +967,18 @@ button {
     font-weight: 300;
 }
 
+.contact-hero__insta {
+    color: var(--white);
+    border-bottom: 1px solid var(--dark-3);
+    padding-bottom: 1px;
+    transition: color 0.3s, border-color 0.3s;
+}
+
+.contact-hero__insta:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+}
+
 /* --- Service cards --- */
 .services {
     padding-bottom: 100px;

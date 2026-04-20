@@ -884,6 +884,28 @@ button {
     transform: translateX(4px);
 }
 
+.about__ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 8px;
+}
+
+.about__cta--ghost {
+    color: var(--white);
+    border-color: var(--dark-3);
+}
+
+.about__cta--ghost:hover {
+    background: var(--white);
+    color: var(--black);
+    border-color: var(--white);
+}
+
+.about__cta--ghost:hover svg {
+    transform: none;
+}
+
 @media (max-width: 768px) {
     .about__grid {
         grid-template-columns: 1fr;

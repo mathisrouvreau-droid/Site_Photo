@@ -203,20 +203,44 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Contact form ---
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
+        contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
 
             const formData = new FormData(contactForm);
             const data = Object.fromEntries(formData);
+            const submitBtn = contactForm.querySelector('.form__submit');
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.querySelector('span').textContent = 'Envoi\u2026';
+            }
 
-            // Show success state
-            contactForm.innerHTML = `
-                <div class="form__success">
-                    <span class="form__success-icon">&check;</span>
-                    <h3>Message envoy\u00e9</h3>
-                    <p>Merci ${data.name}, je vous r\u00e9pondrai tr\u00e8s vite.</p>
-                </div>
-            `;
+            try {
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (response.ok) {
+                    contactForm.innerHTML = `
+                        <div class="form__success">
+                            <span class="form__success-icon">&check;</span>
+                            <h3>Message envoy\u00e9</h3>
+                            <p>Merci ${data.name}, je vous r\u00e9pondrai tr\u00e8s vite.</p>
+                        </div>
+                    `;
+                } else {
+                    throw new Error('Envoi \u00e9chou\u00e9');
+                }
+            } catch (err) {
+                contactForm.innerHTML = `
+                    <div class="form__success">
+                        <span class="form__success-icon" style="color:#c44;">!</span>
+                        <h3>Une erreur est survenue</h3>
+                        <p>Merci de r\u00e9essayer ou d'\u00e9crire directement \u00e0 mathis.rouvreau@gmail.com.</p>
+                    </div>
+                `;
+            }
         });
     }
 

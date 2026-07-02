@@ -84,9 +84,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function filterGallery(filter) {
+        let visibleIndex = 0;
         galleryItems.forEach(item => {
+            item.classList.remove('gallery__item--appear');
             if (filter === 'all' || item.dataset.category === filter) {
                 item.classList.remove('hidden');
+                // Force reflow so the appear animation restarts on each filter change
+                void item.offsetWidth;
+                item.style.setProperty('--appear-delay', `${Math.min(visibleIndex * 0.05, 0.6)}s`);
+                item.classList.add('gallery__item--appear');
+                visibleIndex++;
             } else {
                 item.classList.add('hidden');
             }

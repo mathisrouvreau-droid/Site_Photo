@@ -444,7 +444,7 @@ button {
 
 .featured__grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 24px;
 }
 
@@ -598,6 +598,22 @@ button {
 
 .gallery__item.hidden {
     display: none;
+}
+
+.gallery__item--appear {
+    animation: galleryAppear 0.6s var(--ease-out-expo) both;
+    animation-delay: var(--appear-delay, 0s);
+}
+
+@keyframes galleryAppear {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 }
 
 .gallery__item img {

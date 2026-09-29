@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mathisrouvreau-droid.github.io/Site_Photo/sitemap.xml

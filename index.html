@@ -3,121 +3,380 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MR VISUALS — Photographie</title>
-    <meta name="description" content="MR VISUALS — Mathis Rouvreau, photographe. Golf, portrait, danse, automobile et nature. Capturer l'instant, sublimer l'émotion.">
+    <title>MR VISUALS — Photographe golf, portrait, danse &amp; automobile</title>
+    <meta name="description" content="MR VISUALS — Mathis Rouvreau, photographe en Vendée. Golf, portrait, danse, automobile et nature. Capturer l'instant, sublimer l'émotion.">
+    <meta name="theme-color" content="#080808">
+    <link rel="canonical" href="https://mathisrouvreau-droid.github.io/Site_Photo/">
     <meta property="og:type" content="website">
+    <meta property="og:site_name" content="MR VISUALS">
+    <meta property="og:locale" content="fr_FR">
     <meta property="og:title" content="MR VISUALS — Photographie">
     <meta property="og:description" content="Capturer l'instant, sublimer l'émotion. Golf, portrait, danse, automobile et nature.">
-    <meta property="og:image" content="https://mathisrouvreau-droid.github.io/Site_Photo/images/DSC_8825.jpeg">
-    <link rel="icon" type="image/png" href="images/logo.png">
+    <meta property="og:url" content="https://mathisrouvreau-droid.github.io/Site_Photo/">
+    <meta property="og:image" content="https://mathisrouvreau-droid.github.io/Site_Photo/images/og.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/png" href="images/brand/favicon.png">
+    <link rel="apple-touch-icon" href="images/brand/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <noscript><style>.reveal-on-scroll{opacity:1;transform:none}</style></noscript>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Mathis Rouvreau",
+        "alternateName": "MR VISUALS",
+        "jobTitle": "Photographe",
+        "url": "https://mathisrouvreau-droid.github.io/Site_Photo/",
+        "image": "https://mathisrouvreau-droid.github.io/Site_Photo/images/og.jpg",
+        "address": { "@type": "PostalAddress", "addressLocality": "Mortagne-sur-Sèvre", "addressRegion": "Vendée", "addressCountry": "FR" },
+        "sameAs": [
+            "https://www.instagram.com/mpict_rv12/",
+            "https://www.linkedin.com/in/mathis-rouvreau-aa6096305/"
+        ]
+    }
+    </script>
 </head>
 <body class="page-home">
-    <!-- Film grain overlay -->
     <div class="grain-overlay" aria-hidden="true"></div>
+    <div class="progress" id="progress" aria-hidden="true"></div>
+    <a class="skip-link" href="#main">Aller au contenu</a>
 
     <!-- Navigation -->
-    <nav class="nav" id="nav">
-        <a href="index.html" class="nav__logo"><img src="images/logo.png" alt="MR VISUALS"></a>
-        <button class="nav__burger" id="navBurger" aria-label="Menu">
+    <nav class="nav" id="nav" aria-label="Navigation principale">
+        <a href="index.html" class="nav__logo" aria-label="MR VISUALS — accueil"><img src="images/brand/logo-white.png" alt="MR VISUALS" width="82" height="50"></a>
+        <button class="nav__burger" id="navBurger" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
             <span></span>
             <span></span>
         </button>
         <ul class="nav__links" id="navLinks">
-            <li><a href="index.html" class="active">Accueil</a></li>
+            <li><a href="index.html" class="active" aria-current="page">Accueil</a></li>
             <li><a href="gallery.html">Galerie</a></li>
             <li><a href="about.html">À propos</a></li>
             <li><a href="contact.html">Contact</a></li>
+            <li>
+                <a href="https://www.instagram.com/mpict_rv12/" target="_blank" rel="noopener" class="nav__ig">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+                    Instagram
+                </a>
+            </li>
         </ul>
     </nav>
 
-    <!-- Hero -->
+    <main id="main">
+
+    <!-- Hero : boucle vidéo (showreel) -->
     <section class="hero">
-        <div class="hero__bg">
-            <img src="images/DSC_8825.jpeg" alt="" class="hero__img">
+        <div class="hero__media">
+            <video class="hero__video" id="heroVideo" autoplay muted loop playsinline preload="auto" aria-hidden="true" tabindex="-1"></video>
+            <script>
+                // Écran en portrait -> boucle verticale ; sinon boucle 16:9. Suit les rotations / redimensionnements.
+                (function () {
+                    var v = document.getElementById('heroVideo'), c = navigator.connection;
+                    if (matchMedia('(prefers-reduced-motion: reduce)').matches || (c && c.saveData)) return;
+                    var mq = matchMedia('(max-aspect-ratio: 1/1)');
+                    function pick() {
+                        var src = mq.matches ? 'videos/hero-mobile.mp4' : 'videos/hero.mp4';
+                        if (v.getAttribute('src') === src) return;
+                        var wasPlaying = v.getAttribute('src') && !v.paused;
+                        v.src = src;
+                        if (wasPlaying) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+                    }
+                    pick();
+                    if (mq.addEventListener) mq.addEventListener('change', pick); else mq.addListener(pick);
+                })();
+            </script>
         </div>
+        <div class="hero__scrim"></div>
         <div class="hero__content">
             <span class="hero__overtitle reveal-up">Photographe</span>
-            <h1 class="hero__title">
-                <span class="reveal-up" style="--delay: 0.15s">MR</span> <span class="reveal-up accent" style="--delay: 0.25s">VI</span><span class="reveal-up" style="--delay: 0.35s">SUALS</span>
+            <h1 class="hero__title" aria-label="MR VISUALS">
+                <span class="reveal-up" style="--delay: 0.15s" aria-hidden="true">MR</span> <span class="reveal-up accent" style="--delay: 0.25s" aria-hidden="true">VI</span><span class="reveal-up" style="--delay: 0.35s" aria-hidden="true">SUALS</span>
             </h1>
             <p class="hero__subtitle reveal-up" style="--delay: 0.55s">Capturer l'instant, sublimer l'émotion</p>
-            <a href="gallery.html" class="hero__cta reveal-up" style="--delay: 0.75s">
-                <span>Découvrir</span>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
+            <div class="hero__actions reveal-up" style="--delay: 0.75s">
+                <a href="gallery.html" class="btn">
+                    <span>Découvrir</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+                <a href="#film" class="btn btn--ghost">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg>
+                    <span>Voir le film</span>
+                </a>
+            </div>
         </div>
-        <div class="hero__scroll reveal-up" style="--delay: 1s">
-            <div class="hero__scroll-line"></div>
-            <span>Scroll</span>
+        <div class="hero__foot reveal-up" style="--delay: 1s">
+            <span class="hero__place">Vendée · France</span>
+            <div class="hero__scroll">
+                <div class="hero__scroll-line"></div>
+                <span>Scroll</span>
+            </div>
+            <button class="hero__pause" id="heroToggle" type="button" aria-label="Mettre la vidéo en pause">
+                <svg class="i-pause" viewBox="0 0 10 10" fill="currentColor" aria-hidden="true"><rect x="1" y="1" width="2.6" height="8"/><rect x="6.4" y="1" width="2.6" height="8"/></svg>
+                <svg class="i-play" viewBox="0 0 10 10" fill="currentColor" aria-hidden="true"><path d="M2 1v8l7-4z"/></svg>
+                <span class="js-label">Pause</span>
+            </button>
         </div>
     </section>
 
-    <!-- Featured section -->
-    <section class="featured">
+    <!-- Bandeau des collections -->
+    <div class="marquee" aria-hidden="true">
+        <div class="marquee__track">
+            <div class="marquee__group">
+                <a class="marquee__item" href="gallery.html#golf" tabindex="-1">Golf</a>
+                <a class="marquee__item" href="gallery.html#portrait" tabindex="-1">Portrait</a>
+                <a class="marquee__item" href="gallery.html#danse" tabindex="-1">Danse</a>
+                <a class="marquee__item" href="gallery.html#voiture" tabindex="-1">Automobile</a>
+                <a class="marquee__item" href="gallery.html#nature" tabindex="-1">Nature</a>
+                <a class="marquee__item" href="gallery.html#basket" tabindex="-1">Basket</a>
+            </div>
+            <div class="marquee__group">
+                <a class="marquee__item" href="gallery.html#golf" tabindex="-1">Golf</a>
+                <a class="marquee__item" href="gallery.html#portrait" tabindex="-1">Portrait</a>
+                <a class="marquee__item" href="gallery.html#danse" tabindex="-1">Danse</a>
+                <a class="marquee__item" href="gallery.html#voiture" tabindex="-1">Automobile</a>
+                <a class="marquee__item" href="gallery.html#nature" tabindex="-1">Nature</a>
+                <a class="marquee__item" href="gallery.html#basket" tabindex="-1">Basket</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Intro -->
+    <section class="section intro">
         <div class="container">
-            <span class="section-label reveal-on-scroll">Collections</span>
-            <h2 class="section-title reveal-on-scroll">Galeries sélectionnées</h2>
-            <div class="featured__grid">
-                <a href="gallery.html#golf" class="featured__card reveal-on-scroll">
-                    <div class="featured__card-img">
-                        <img src="images/golf/DSCF0734.jpg" alt="Golf">
+            <div class="intro__grid">
+                <span class="section-label reveal-on-scroll">01 — Le regard</span>
+                <div>
+                    <p class="intro__lead reveal-on-scroll">
+                        Je photographie ce qui <em>bouge</em>, ce qui <em>brille</em>, ce qui ne dure
+                        qu'une fraction de seconde — sur un green, sur une scène, dans un regard.
+                    </p>
+                    <div class="intro__stats reveal-on-scroll" style="--delay: 0.15s">
+                        <div>
+                            <span class="intro__stat-num">5</span>
+                            <span class="intro__stat-label">Collections</span>
+                        </div>
+                        <div>
+                            <span class="intro__stat-num">50+</span>
+                            <span class="intro__stat-label">Photographies</span>
+                        </div>
+                        <div>
+                            <span class="intro__stat-num">F2.8</span>
+                            <span class="intro__stat-label">Fujifilm X-H2 · 50–140&nbsp;mm</span>
+                        </div>
                     </div>
-                    <div class="featured__card-content">
-                        <span class="featured__card-num">01</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dernière série -->
+    <section class="section series" id="serie">
+        <div class="container">
+            <div class="series__head">
+                <div>
+                    <span class="section-label reveal-on-scroll">02 — Dernière série</span>
+                    <h2 class="series__title reveal-on-scroll" style="--delay: 0.08s">Golden<br><em>Hour</em></h2>
+                </div>
+                <div class="series__side reveal-on-scroll" style="--delay: 0.16s">
+                    <p>Une fin de journée sur le parcours : la lumière rasante, les gestes, les regards. 23&nbsp;photographies de golf à retrouver dans la galerie.</p>
+                    <a href="gallery.html#golf" class="btn">
+                        <span>Voir la série</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="series__grid">
+                <a href="gallery.html#golf" class="series__item reveal-on-scroll" aria-label="Golf — Golden Hour, photo 1">
+                    <img src="images/web/golf/DSCF3270.webp" srcset="images/web/golf/DSCF3270_s.webp 900w, images/web/golf/DSCF3270.webp 1418w" sizes="(max-width: 768px) 100vw, 40vw" width="1418" height="2000" alt="Golfeuse en plein swing, lumière dorée de fin de journée" loading="lazy" decoding="async" style="object-position: 50% 30%">
+                    <span class="series__tag">Le swing</span>
+                </a>
+                <a href="gallery.html#golf" class="series__item reveal-on-scroll" style="--delay: 0.1s" aria-label="Golf — Golden Hour, photo 2">
+                    <img src="images/web/golf/DSCF3314_s.webp" srcset="images/web/golf/DSCF3314_s.webp 760w, images/web/golf/DSCF3314.webp 1125w" sizes="(max-width: 768px) 50vw, 24vw" width="760" height="1350" alt="Portrait d'une golfeuse souriante en polo bleu" loading="lazy" decoding="async">
+                    <span class="series__tag">Le sourire</span>
+                </a>
+                <a href="gallery.html#golf" class="series__item reveal-on-scroll" style="--delay: 0.2s" aria-label="Golf — Golden Hour, photo 3">
+                    <img src="images/web/golf/DSCF3226_s.webp" srcset="images/web/golf/DSCF3226_s.webp 900w, images/web/golf/DSCF3226.webp 1333w" sizes="(max-width: 768px) 50vw, 32vw" width="900" height="1350" alt="Silhouette d'un golfeur, driver levé vers le ciel bleu" loading="lazy" decoding="async" style="object-position: 50% 30%">
+                    <span class="series__tag">Le ciel</span>
+                </a>
+                <a href="gallery.html#golf" class="series__item reveal-on-scroll" style="--delay: 0.3s" aria-label="Golf — Golden Hour, photo 4">
+                    <img src="images/web/golf/DSCF3491_s.webp" srcset="images/web/golf/DSCF3491_s.webp 900w, images/web/golf/DSCF3491.webp 2000w" sizes="(max-width: 768px) 100vw, 56vw" width="900" height="696" alt="Golfeuse à l'approche, voiturette de golf au premier plan" loading="lazy" decoding="async" style="object-position: 70% 50%">
+                    <span class="series__tag">Le parcours</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Film / Instagram -->
+    <section class="section film" id="film">
+        <div class="container">
+            <div class="film__grid">
+                <div class="film__text">
+                    <span class="section-label reveal-on-scroll">03 — Film</span>
+                    <h2 class="section-title reveal-on-scroll" style="--delay: 0.08s">Golden Hour,<br><em>en mouvement</em></h2>
+                    <p class="reveal-on-scroll" style="--delay: 0.16s">
+                        La dernière série golf en 20&nbsp;secondes&nbsp;: un swing décomposé image par image,
+                        la lumière de fin de journée, des regards. Le format vertical fait pour Instagram,
+                        où je partage aussi les coulisses des séances.
+                    </p>
+                    <div class="film__meta reveal-on-scroll" style="--delay: 0.2s">
+                        <div><span>0:20</span><span>Durée</span></div>
+                        <div><span>9:16</span><span>Format reel</span></div>
+                        <div><span>Golf</span><span>Série</span></div>
+                    </div>
+                    <div class="btn-row reveal-on-scroll" style="--delay: 0.25s">
+                        <a href="https://www.instagram.com/mpict_rv12/" target="_blank" rel="noopener" class="btn btn--solid">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+                            <span>Voir sur Instagram</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="phone reveal-on-scroll" style="--delay: 0.15s">
+                    <div class="phone__screen">
+                        <video id="reelVideo" muted loop playsinline preload="none" poster="videos/reel-poster.jpg" aria-label="Reel Golden Hour — MR VISUALS">
+                            <source src="videos/reel.mp4" type="video/mp4">
+                        </video>
+                        <span class="phone__badge">Reel</span>
+                        <button class="phone__toggle" id="reelToggle" type="button" aria-label="Mettre la vidéo en pause">
+                            <svg class="i-pause" viewBox="0 0 10 10" fill="currentColor" aria-hidden="true"><rect x="1" y="1" width="2.6" height="8"/><rect x="6.4" y="1" width="2.6" height="8"/></svg>
+                            <svg class="i-play" viewBox="0 0 10 10" fill="currentColor" aria-hidden="true"><path d="M2 1v8l7-4z"/></svg>
+                        </button>
+                        <div class="phone__handle">
+                            <span class="phone__avatar"><img src="images/brand/favicon.png" alt="" width="34" height="34"></span>
+                            <span class="phone__name">mpict_rv12</span>
+                            <a class="phone__follow" href="https://www.instagram.com/mpict_rv12/" target="_blank" rel="noopener">Suivre</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collections -->
+    <section class="section collections">
+        <div class="container">
+            <span class="section-label reveal-on-scroll">04 — Collections</span>
+            <h2 class="section-title reveal-on-scroll">Galeries sélectionnées</h2>
+            <div class="collections__grid">
+                <a href="gallery.html#golf" class="card reveal-on-scroll">
+                    <div class="card__img">
+                        <img src="images/web/golf/DSCF3386.webp" srcset="images/web/golf/DSCF3386_s.webp 760w, images/web/golf/DSCF3386.webp 1125w" sizes="(max-width: 1024px) 100vw, 50vw" width="1125" height="2000" alt="Golfeur en fin de swing, cap blanche" loading="lazy" decoding="async" style="object-position: 50% 25%">
+                    </div>
+                    <span class="card__count">39 photos</span>
+                    <div class="card__body">
+                        <span class="card__num">01</span>
                         <h3>Golf</h3>
                         <p>L'élégance du green</p>
                     </div>
                 </a>
-                <a href="gallery.html#portrait" class="featured__card reveal-on-scroll" style="--delay: 0.15s">
-                    <div class="featured__card-img">
-                        <img src="images/portrait/DSCF0317.jpeg" alt="Portrait">
+                <a href="gallery.html#portrait" class="card reveal-on-scroll" style="--delay: 0.1s">
+                    <div class="card__img">
+                        <img src="images/web/portrait/DB1A6329-B156-465D-AE1E-34B82695212A_s.webp" width="900" height="1200" alt="Portrait d'un homme en pull bleu marine" loading="lazy" decoding="async">
                     </div>
-                    <div class="featured__card-content">
-                        <span class="featured__card-num">02</span>
+                    <span class="card__count">6 photos</span>
+                    <div class="card__body">
+                        <span class="card__num">02</span>
                         <h3>Portrait</h3>
                         <p>L'âme du regard</p>
                     </div>
                 </a>
-                <a href="gallery.html#nature" class="featured__card reveal-on-scroll" style="--delay: 0.3s">
-                    <div class="featured__card-img">
-                        <img src="images/nature/DSCF0170.jpg" alt="Nature">
+                <a href="gallery.html#danse" class="card reveal-on-scroll" style="--delay: 0.2s">
+                    <div class="card__img">
+                        <img src="images/web/danse/DSCF9558-2_s.webp" width="900" height="1350" alt="Danseuse en silhouette dans la fumée, bras levés" loading="lazy" decoding="async">
                     </div>
-                    <div class="featured__card-content">
-                        <span class="featured__card-num">03</span>
-                        <h3>Nature</h3>
-                        <p>La beauté du monde</p>
-                    </div>
-                </a>
-                <a href="gallery.html#danse" class="featured__card reveal-on-scroll" style="--delay: 0.45s">
-                    <div class="featured__card-img">
-                        <img src="images/danse/DSCF9558.jpg" alt="Danse">
-                    </div>
-                    <div class="featured__card-content">
-                        <span class="featured__card-num">04</span>
+                    <span class="card__count">3 photos</span>
+                    <div class="card__body">
+                        <span class="card__num">03</span>
                         <h3>Danse</h3>
                         <p>La grâce du mouvement</p>
+                    </div>
+                </a>
+                <a href="gallery.html#voiture" class="card reveal-on-scroll" style="--delay: 0.3s">
+                    <div class="card__img">
+                        <img src="images/web/voiture/DSCF0893_s.webp" width="759" height="1350" alt="Avant d'une voiture grise, phare et calandre" loading="lazy" decoding="async">
+                    </div>
+                    <span class="card__count">2 photos</span>
+                    <div class="card__body">
+                        <span class="card__num">04</span>
+                        <h3>Automobile</h3>
+                        <p>Les lignes et la lumière</p>
+                    </div>
+                </a>
+                <a href="gallery.html#nature" class="card reveal-on-scroll" style="--delay: 0.4s">
+                    <div class="card__img">
+                        <img src="images/web/nature/DSCF0433_s.webp" width="759" height="1350" alt="Rose rose en gros plan" loading="lazy" decoding="async">
+                    </div>
+                    <span class="card__count">9 photos</span>
+                    <div class="card__body">
+                        <span class="card__num">05</span>
+                        <h3>Nature</h3>
+                        <p>La beauté du monde</p>
                     </div>
                 </a>
             </div>
         </div>
     </section>
 
+    <!-- CTA -->
+    <section class="cta-band">
+        <div class="container">
+            <h2 class="cta-band__title reveal-on-scroll">Une séance en tête&nbsp;?<br><em>Parlons-en.</em></h2>
+            <div class="btn-row reveal-on-scroll" style="--delay: 0.12s">
+                <a href="contact.html" class="btn btn--solid">
+                    <span>Me contacter</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+                <a href="https://www.instagram.com/mpict_rv12/" target="_blank" rel="noopener" class="btn btn--ghost">
+                    <span>@mpict_rv12</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    </main>
+
     <!-- Footer -->
     <footer class="footer">
-        <div class="container footer__inner">
-            <a href="index.html" class="footer__logo">MR VISUALS</a>
-            <p class="footer__copy">&copy; 2026 MR VISUALS. Tous droits réservés.</p>
-            <div class="footer__socials">
-                <a href="https://www.instagram.com/mpict_rv12/" target="_blank" aria-label="Instagram">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
-                </a>
-                <a href="https://www.linkedin.com/in/mathis-rouvreau-aa6096305/" target="_blank" aria-label="LinkedIn">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 10v7M7 7v.01M11 10v7m0-4c0-2 1.5-3 3-3s3 1 3 3v4"/></svg>
-                </a>
+        <div class="container">
+            <div class="footer__top">
+                <div class="footer__brand">
+                    <img src="images/brand/logo-white.png" alt="MR VISUALS" width="105" height="64" loading="lazy">
+                    <p>Capturer l'instant, sublimer l'émotion.</p>
+                </div>
+                <div class="footer__col">
+                    <h4>Explorer</h4>
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="gallery.html">Galerie</a></li>
+                        <li><a href="about.html">À propos</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer__col">
+                    <h4>Suivre</h4>
+                    <ul>
+                        <li><a href="https://www.instagram.com/mpict_rv12/" target="_blank" rel="noopener">Instagram ↗</a></li>
+                        <li><a href="https://www.linkedin.com/in/mathis-rouvreau-aa6096305/" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+                        <li><a href="mailto:mathis.rouvreau@gmail.com">Email</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p class="footer__copy">&copy; 2026 MR VISUALS. Tous droits réservés.</p>
+                <div class="footer__socials">
+                    <a href="https://www.instagram.com/mpict_rv12/" target="_blank" rel="noopener" aria-label="Instagram">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/mathis-rouvreau-aa6096305/" target="_blank" rel="noopener" aria-label="LinkedIn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 10v7M7 7v.01M11 10v7m0-4c0-2 1.5-3 3-3s3 1 3 3v4"/></svg>
+                    </a>
+                </div>
             </div>
         </div>
     </footer>

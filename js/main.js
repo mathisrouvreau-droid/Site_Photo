@@ -169,6 +169,26 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- Galerie : les photos entrent en cascade quand elles apparaissent à l'écran ---
+    if (galleryItems.length > 0) {
+        if ('IntersectionObserver' in window && !prefersReducedMotion) {
+            const gio = new IntersectionObserver((entries) => {
+                let k = 0;
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) return;
+                    const el = entry.target;
+                    el.style.transitionDelay = `${k++ * 70}ms`;
+                    el.classList.add('in');
+                    gio.unobserve(el);
+                    setTimeout(() => { el.style.transitionDelay = ''; }, 1400);
+                });
+            }, { threshold: 0.05, rootMargin: '0px 0px -5% 0px' });
+            galleryItems.forEach(item => gio.observe(item));
+        } else {
+            galleryItems.forEach(item => item.classList.add('in'));
+        }
+    }
+
     // --- Lightbox ---
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightboxImg');
@@ -178,6 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentIndex = 0;
     let lastFocus = null;
     let loadToken = 0;
+    let flipFrom = null;          // rectangle de la miniature d'où part l'image à l'ouverture
 
     function show(index, direction = 0) {
         currentIndex = (index + currentItems.length) % currentItems.length;
@@ -193,6 +214,33 @@ document.addEventListener('DOMContentLoaded', () => {
             if (token !== loadToken) return; // un autre affichage a pris le relais
             lightboxImg.src = src;
             lightboxImg.alt = item.querySelector('img').alt;
+            if (flipFrom && !prefersReducedMotion && lightboxImg.animate) {
+                // l'image « vole » depuis sa miniature jusqu'à sa place dans la visionneuse
+                const from = flipFrom;
+                flipFrom = null;
+                lightbox.classList.add('is-loaded');
+                lightboxImg.style.transition = 'none';
+                lightboxImg.style.transform = 'none';
+                lightboxImg.style.opacity = '1';
+                const to = lightboxImg.getBoundingClientRect();
+                const reset = () => {
+                    lightboxImg.style.transition = '';
+                    lightboxImg.style.transform = '';
+                    lightboxImg.style.opacity = '';
+                };
+                if (to.width > 0) {
+                    const dx = from.left - to.left, dy = from.top - to.top;
+                    const sx = from.width / to.width, sy = from.height / to.height;
+                    const anim = lightboxImg.animate([
+                        { transformOrigin: 'top left', transform: `translate(${dx}px, ${dy}px) scale(${sx}, ${sy})` },
+                        { transformOrigin: 'top left', transform: 'none' }
+                    ], { duration: 780, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' });
+                    anim.onfinish = anim.oncancel = reset;
+                } else {
+                    reset();
+                }
+                return;
+            }
             requestAnimationFrame(() => {
                 lightboxImg.style.transform = '';
                 lightbox.classList.add('is-loaded');
@@ -214,6 +262,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function openLightbox(item) {
         currentItems = Array.from(document.querySelectorAll('.gallery__item:not(.hidden)'));
         lastFocus = item;
+        flipFrom = item.querySelector('img').getBoundingClientRect();
         lightbox.classList.add('active');
         lightbox.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
@@ -222,7 +271,32 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function closeLightbox() {
-        lightbox.classList.remove('active', 'is-loaded');
+        // retour en vol vers la miniature si elle est encore visible à l'écran
+        const item = currentItems[currentIndex];
+        const thumb = item && item.querySelector('img');
+        const r = thumb && thumb.getBoundingClientRect();
+        const visible = r && r.width > 0 && r.bottom > 0 && r.top < window.innerHeight;
+        let flying = false;
+        if (visible && !prefersReducedMotion && lightbox.classList.contains('is-loaded') && lightboxImg.animate) {
+            const to = lightboxImg.getBoundingClientRect();
+            if (to.width > 0) {
+                const dx = r.left - to.left, dy = r.top - to.top;
+                const sx = r.width / to.width, sy = r.height / to.height;
+                lightboxImg.style.transition = 'none';
+                const anim = lightboxImg.animate([
+                    { transformOrigin: 'top left', transform: 'none' },
+                    { transformOrigin: 'top left', transform: `translate(${dx}px, ${dy}px) scale(${sx}, ${sy})` }
+                ], { duration: 560, easing: 'cubic-bezier(0.65, 0, 0.35, 1)', fill: 'forwards' });
+                flying = true;
+                anim.onfinish = () => {
+                    anim.cancel();
+                    lightboxImg.style.transition = '';
+                    lightbox.classList.remove('is-loaded');
+                };
+            }
+        }
+        lightbox.classList.remove('active');
+        if (!flying) lightbox.classList.remove('is-loaded');
         lightbox.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = '';
         loadToken++;

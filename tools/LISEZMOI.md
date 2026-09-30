@@ -1,7 +1,7 @@
 # Outils MR VISUALS
 
-Petits scripts Python pour préparer les images et fabriquer les vidéos du site.
-À lancer **depuis la racine du site**. Il faut Python avec `pillow`, `numpy` et `opencv-python`, et `ffmpeg` installé.
+Petits scripts pour préparer les images et fabriquer les vidéos du site.
+À lancer **depuis la racine du site**. Il faut Python avec `pillow`, `numpy` et `opencv-python`, `ffmpeg`, et Node.js + Google Chrome (pour dessiner les textes des vidéos dans la typo du site).
 
 ## Ajouter de nouvelles photos à la galerie
 
@@ -29,10 +29,19 @@ Les nombres de photos affichés à la main sur l'accueil et la page À propos (3
 Ajouter `--preview` à n'importe lequel pour obtenir seulement une planche-contact (rapide) dans `tools/_preview_*.jpg`.
 
 Les scènes se règlent directement dans les scripts :
-- `make_hero.py` → fonction `build_scenes()` (3 photos par scène, dérive, ordre)
-- `make_reel.py` → `build_shots()` (liste des photos, durée, zoom) — montage calé sur 120 BPM (une coupe toutes les 0,5 s)
+- `make_hero.py` → `build_scenes()` (3 photos par scène, dérive, ordre) et `_reveal()` (le changement de scène en volet doré)
+- `make_reel.py` → `build_shots()` (photos, durée, zoom, transition de chaque plan), `SUBJECT` (où le collimateur d'autofocus se verrouille), `CAPTIONS`. Montage calé sur 120 BPM (une coupe toutes les 0,5 s). Les réglages affichés (ouverture, vitesse, ISO, focale) sont lus dans l'EXIF de chaque photo.
 
-## Autres
+Si le nombre ou l'ordre des scènes du hero change, mettre à jour `SCENES`, `LOOP`, `STEP` dans `js/motion.js` (l'étiquette « 01 — Portrait » suit la vidéo).
+
+## Motion design (briques)
+
+- `python tools/make_text_atlas.mjs` : Chrome dessine les lettres (Cormorant Garamond + Outfit) dans `tools/atlas/`. À refaire seulement si on change de police.
+- `textlib.py` : texte animé lettre par lettre dans les vidéos (crénage, masque de montée, espacement animé).
+- `motion.py` : viseur / collimateur, transitions (volet, zoom-punch, diaphragme, poussée), flou de mise au point, halo de lumière, lecture EXIF.
+- `python tools/make_swing_frames.py` : aligne les 4 photos du swing et les enregistre pour la section « Le geste » du site.
+- `video_lib.py` : outils de montage partagés (caméra, alignement, export ffmpeg).
+
+## Marque
 
 - `python tools/make_brand.py` : refait le logo blanc/doré détouré, le favicon et l'image de partage `images/og.jpg` à partir de `images/logo.png`.
-- `video_lib.py` : outils de montage partagés (mouvement de caméra, alignement des photos, texte, export ffmpeg).

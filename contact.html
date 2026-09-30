@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>document.documentElement.classList.add('js')</script>
     <title>Contact — MR VISUALS</title>
     <meta name="description" content="Contactez MR VISUALS pour un shooting golf, portrait, danse, automobile ou nature. Réponse rapide garantie.">
     <meta name="theme-color" content="#080808">
@@ -26,6 +27,7 @@
     <noscript><style>.reveal-on-scroll{opacity:1;transform:none}</style></noscript>
 </head>
 <body class="page-contact">
+    <div class="curtain" id="curtain" aria-hidden="true"><img class="curtain__mark" src="images/brand/mark-white.png" alt="" width="84" height="51"></div>
     <div class="grain-overlay" aria-hidden="true"></div>
     <div class="progress" id="progress" aria-hidden="true"></div>
     <a class="skip-link" href="#main">Aller au contenu</a>
@@ -60,7 +62,7 @@
                 <span class="contact-hero__dot" aria-hidden="true"></span>
                 <span>Disponible pour de nouveaux projets</span>
             </div>
-            <h1 class="contact-hero__title reveal-up" style="--delay: 0.1s">
+            <h1 class="contact-hero__title" data-split="words" data-split-hero>
                 <em>Chaque&nbsp;</em>instant<br>
                 mérite d'être <em>capturé.</em>
             </h1>
@@ -229,6 +231,7 @@
                     </ul>
                 </div>
             </div>
+            <div class="footer__mega" data-split="chars" aria-hidden="true">MR VISUALS</div>
             <div class="footer__bottom">
                 <p class="footer__copy">&copy; 2026 MR VISUALS. Tous droits réservés.</p>
                 <div class="footer__socials">
@@ -244,6 +247,7 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <script src="js/motion.js"></script>
     <script>
         // Service cards pre-fill the form
         document.querySelectorAll('.service-card').forEach(card => {

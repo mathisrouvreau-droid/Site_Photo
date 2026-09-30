@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>document.documentElement.classList.add('js')</script>
     <title>MR VISUALS — Photographe golf, portrait, danse &amp; automobile</title>
     <meta name="description" content="MR VISUALS — Mathis Rouvreau, photographe en Vendée. Golf, portrait, danse, automobile et nature. Capturer l'instant, sublimer l'émotion.">
     <meta name="theme-color" content="#080808">
@@ -42,6 +43,7 @@
     </script>
 </head>
 <body class="page-home">
+    <div class="curtain" id="curtain" aria-hidden="true"><img class="curtain__mark" src="images/brand/mark-white.png" alt="" width="84" height="51"></div>
     <div class="grain-overlay" aria-hidden="true"></div>
     <div class="progress" id="progress" aria-hidden="true"></div>
     <a class="skip-link" href="#main">Aller au contenu</a>
@@ -92,11 +94,10 @@
             </script>
         </div>
         <div class="hero__scrim"></div>
+        <div class="hero__vf" aria-hidden="true"><i class="vf vf--tl"></i><i class="vf vf--tr"></i><i class="vf vf--bl"></i><i class="vf vf--br"></i></div>
         <div class="hero__content">
             <span class="hero__overtitle reveal-up">Photographe</span>
-            <h1 class="hero__title" aria-label="MR VISUALS">
-                <span class="reveal-up" style="--delay: 0.15s" aria-hidden="true">MR</span> <span class="reveal-up accent" style="--delay: 0.25s" aria-hidden="true">VI</span><span class="reveal-up" style="--delay: 0.35s" aria-hidden="true">SUALS</span>
-            </h1>
+            <h1 class="hero__title" data-split="chars" data-split-hero aria-label="MR VISUALS"><span>MR</span> <span class="nb"><span class="accent">VI</span><span>SUALS</span></span></h1>
             <p class="hero__subtitle reveal-up" style="--delay: 0.55s">Capturer l'instant, sublimer l'émotion</p>
             <div class="hero__actions reveal-up" style="--delay: 0.75s">
                 <a href="gallery.html" class="btn">
@@ -110,7 +111,11 @@
             </div>
         </div>
         <div class="hero__foot reveal-up" style="--delay: 1s">
-            <span class="hero__place">Vendée · France</span>
+            <div class="hero__scene" id="heroScene" aria-hidden="true">
+                <span class="hero__scene-num" id="heroSceneNum">01</span>
+                <span class="hero__scene-line"></span>
+                <span class="hero__scene-name" id="heroSceneName">Portrait</span>
+            </div>
             <div class="hero__scroll">
                 <div class="hero__scroll-line"></div>
                 <span>Scroll</span>
@@ -151,17 +156,17 @@
             <div class="intro__grid">
                 <span class="section-label reveal-on-scroll">01 — Le regard</span>
                 <div>
-                    <p class="intro__lead reveal-on-scroll">
+                    <p class="intro__lead" data-scrub>
                         Je photographie ce qui <em>bouge</em>, ce qui <em>brille</em>, ce qui ne dure
                         qu'une fraction de seconde — sur un green, sur une scène, dans un regard.
                     </p>
                     <div class="intro__stats reveal-on-scroll" style="--delay: 0.15s">
                         <div>
-                            <span class="intro__stat-num">5</span>
+                            <span class="intro__stat-num" data-count="5">5</span>
                             <span class="intro__stat-label">Collections</span>
                         </div>
                         <div>
-                            <span class="intro__stat-num">50+</span>
+                            <span class="intro__stat-num" data-count="50" data-suffix="+">50+</span>
                             <span class="intro__stat-label">Photographies</span>
                         </div>
                         <div>
@@ -174,13 +179,49 @@
         </div>
     </section>
 
+    <!-- Le geste : swing décomposé, piloté par le défilement -->
+    <section class="swing" id="geste" aria-labelledby="geste-titre">
+        <div class="swing__sticky">
+            <div class="swing__text">
+                <span class="section-label reveal-on-scroll">02 — Le geste</span>
+                <h2 class="section-title" id="geste-titre" data-split="words">Un swing,<br><em>quatre images</em></h2>
+                <p class="swing__lede">Défilez : le mouvement se décompose <b>à 1/2000&nbsp;s</b>, assez vite pour figer la balle, la main, le sourire. Quatre déclenchements, un seul geste.</p>
+                <div class="swing__steps">
+                    <span class="swing__bar" aria-hidden="true"><i></i></span>
+                    <ol>
+                        <li class="is-active"><span class="n">01</span><span class="t">L'adresse</span></li>
+                        <li><span class="n">02</span><span class="t">La montée</span></li>
+                        <li><span class="n">03</span><span class="t">La descente</span></li>
+                        <li><span class="n">04</span><span class="t">Le finish</span></li>
+                    </ol>
+                </div>
+                <span class="swing__hint" aria-hidden="true">Continuez à défiler</span>
+            </div>
+            <div class="swing__viewport" role="img" aria-label="Swing d'un golfeur décomposé en quatre photographies">
+                <img class="swing__img is-active" src="images/web/swing/swing-1.webp" width="1126" height="2000" alt="" decoding="async">
+                <img class="swing__img" src="images/web/swing/swing-2.webp" width="1126" height="2000" alt="" decoding="async">
+                <img class="swing__img" src="images/web/swing/swing-3.webp" width="1126" height="2000" alt="" decoding="async">
+                <img class="swing__img" src="images/web/swing/swing-4.webp" width="1126" height="2000" alt="" decoding="async">
+                <div class="swing__flash"></div>
+                <div class="swing__vf" aria-hidden="true">
+                    <i class="vf vf--tl"></i><i class="vf vf--tr"></i><i class="vf vf--bl"></i><i class="vf vf--br"></i>
+                    <i class="swing__af lock"></i>
+                    <div class="swing__meta">
+                        <div class="swing__meta-top"><span id="swingFile">DSCF3371</span><span id="swingCount">01 / 04</span></div>
+                        <div class="swing__exif" id="swingExif"><span class="gold">f/5.6</span><span>1/1900</span><span>ISO 1600</span><span>54mm</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Dernière série -->
     <section class="section series" id="serie">
         <div class="container">
             <div class="series__head">
                 <div>
-                    <span class="section-label reveal-on-scroll">02 — Dernière série</span>
-                    <h2 class="series__title reveal-on-scroll" style="--delay: 0.08s">Golden<br><em>Hour</em></h2>
+                    <span class="section-label reveal-on-scroll">03 — Dernière série</span>
+                    <h2 class="series__title" data-split="chars">Golden<br><em>Hour</em></h2>
                 </div>
                 <div class="series__side reveal-on-scroll" style="--delay: 0.16s">
                     <p>Une fin de journée sur le parcours : la lumière rasante, les gestes, les regards. 23&nbsp;photographies de golf à retrouver dans la galerie.</p>
@@ -192,20 +233,20 @@
             </div>
 
             <div class="series__grid">
-                <a href="gallery.html#golf" class="series__item reveal-on-scroll" aria-label="Golf — Golden Hour, photo 1">
-                    <img src="images/web/golf/DSCF3270.webp" srcset="images/web/golf/DSCF3270_s.webp 900w, images/web/golf/DSCF3270.webp 1418w" sizes="(max-width: 768px) 100vw, 40vw" width="1418" height="2000" alt="Golfeuse en plein swing, lumière dorée de fin de journée" loading="lazy" decoding="async" style="object-position: 50% 30%">
+                <a href="gallery.html#golf" class="series__item" data-reveal="mask" data-cursor="Voir" aria-label="Golf — Golden Hour, photo 1">
+                    <img data-parallax="0.05" src="images/web/golf/DSCF3270.webp" srcset="images/web/golf/DSCF3270_s.webp 900w, images/web/golf/DSCF3270.webp 1418w" sizes="(max-width: 768px) 100vw, 40vw" width="1418" height="2000" alt="Golfeuse en plein swing, lumière dorée de fin de journée" loading="lazy" decoding="async" style="object-position: 50% 30%">
                     <span class="series__tag">Le swing</span>
                 </a>
-                <a href="gallery.html#golf" class="series__item reveal-on-scroll" style="--delay: 0.1s" aria-label="Golf — Golden Hour, photo 2">
-                    <img src="images/web/golf/DSCF3314_s.webp" srcset="images/web/golf/DSCF3314_s.webp 760w, images/web/golf/DSCF3314.webp 1125w" sizes="(max-width: 768px) 50vw, 24vw" width="760" height="1350" alt="Portrait d'une golfeuse souriante en polo bleu" loading="lazy" decoding="async">
+                <a href="gallery.html#golf" class="series__item" data-reveal="mask" data-cursor="Voir" style="--delay: 0.1s" aria-label="Golf — Golden Hour, photo 2">
+                    <img data-parallax="0.05" src="images/web/golf/DSCF3314_s.webp" srcset="images/web/golf/DSCF3314_s.webp 760w, images/web/golf/DSCF3314.webp 1125w" sizes="(max-width: 768px) 50vw, 24vw" width="760" height="1350" alt="Portrait d'une golfeuse souriante en polo bleu" loading="lazy" decoding="async">
                     <span class="series__tag">Le sourire</span>
                 </a>
-                <a href="gallery.html#golf" class="series__item reveal-on-scroll" style="--delay: 0.2s" aria-label="Golf — Golden Hour, photo 3">
-                    <img src="images/web/golf/DSCF3226_s.webp" srcset="images/web/golf/DSCF3226_s.webp 900w, images/web/golf/DSCF3226.webp 1333w" sizes="(max-width: 768px) 50vw, 32vw" width="900" height="1350" alt="Silhouette d'un golfeur, driver levé vers le ciel bleu" loading="lazy" decoding="async" style="object-position: 50% 30%">
+                <a href="gallery.html#golf" class="series__item" data-reveal="mask" data-cursor="Voir" style="--delay: 0.2s" aria-label="Golf — Golden Hour, photo 3">
+                    <img data-parallax="0.05" src="images/web/golf/DSCF3226_s.webp" srcset="images/web/golf/DSCF3226_s.webp 900w, images/web/golf/DSCF3226.webp 1333w" sizes="(max-width: 768px) 50vw, 32vw" width="900" height="1350" alt="Silhouette d'un golfeur, driver levé vers le ciel bleu" loading="lazy" decoding="async" style="object-position: 50% 30%">
                     <span class="series__tag">Le ciel</span>
                 </a>
-                <a href="gallery.html#golf" class="series__item reveal-on-scroll" style="--delay: 0.3s" aria-label="Golf — Golden Hour, photo 4">
-                    <img src="images/web/golf/DSCF3491_s.webp" srcset="images/web/golf/DSCF3491_s.webp 900w, images/web/golf/DSCF3491.webp 2000w" sizes="(max-width: 768px) 100vw, 56vw" width="900" height="696" alt="Golfeuse à l'approche, voiturette de golf au premier plan" loading="lazy" decoding="async" style="object-position: 70% 50%">
+                <a href="gallery.html#golf" class="series__item" data-reveal="mask" data-cursor="Voir" style="--delay: 0.3s" aria-label="Golf — Golden Hour, photo 4">
+                    <img data-parallax="0.05" src="images/web/golf/DSCF3491_s.webp" srcset="images/web/golf/DSCF3491_s.webp 900w, images/web/golf/DSCF3491.webp 2000w" sizes="(max-width: 768px) 100vw, 56vw" width="900" height="696" alt="Golfeuse à l'approche, voiturette de golf au premier plan" loading="lazy" decoding="async" style="object-position: 70% 50%">
                     <span class="series__tag">Le parcours</span>
                 </a>
             </div>
@@ -217,8 +258,8 @@
         <div class="container">
             <div class="film__grid">
                 <div class="film__text">
-                    <span class="section-label reveal-on-scroll">03 — Film</span>
-                    <h2 class="section-title reveal-on-scroll" style="--delay: 0.08s">Golden Hour,<br><em>en mouvement</em></h2>
+                    <span class="section-label reveal-on-scroll">04 — Film</span>
+                    <h2 class="section-title" data-split="words">Golden Hour,<br><em>en mouvement</em></h2>
                     <p class="reveal-on-scroll" style="--delay: 0.16s">
                         La dernière série golf en 20&nbsp;secondes&nbsp;: un swing décomposé image par image,
                         la lumière de fin de journée, des regards. Le format vertical fait pour Instagram,
@@ -237,7 +278,7 @@
                     </div>
                 </div>
 
-                <div class="phone reveal-on-scroll" style="--delay: 0.15s">
+                <div class="phone reveal-on-scroll" data-cursor="Reel" style="--delay: 0.15s">
                     <div class="phone__screen">
                         <video id="reelVideo" muted loop playsinline preload="none" poster="videos/reel-poster.jpg" aria-label="Reel Golden Hour — MR VISUALS">
                             <source src="videos/reel.mp4" type="video/mp4">
@@ -261,12 +302,12 @@
     <!-- Collections -->
     <section class="section collections">
         <div class="container">
-            <span class="section-label reveal-on-scroll">04 — Collections</span>
-            <h2 class="section-title reveal-on-scroll">Galeries sélectionnées</h2>
+            <span class="section-label reveal-on-scroll">05 — Collections</span>
+            <h2 class="section-title" data-split="words">Galeries sélectionnées</h2>
             <div class="collections__grid">
-                <a href="gallery.html#golf" class="card reveal-on-scroll">
+                <a href="gallery.html#golf" class="card" data-reveal="mask" data-cursor="Explorer">
                     <div class="card__img">
-                        <img src="images/web/golf/DSCF3386.webp" srcset="images/web/golf/DSCF3386_s.webp 760w, images/web/golf/DSCF3386.webp 1125w" sizes="(max-width: 1024px) 100vw, 50vw" width="1125" height="2000" alt="Golfeur en fin de swing, cap blanche" loading="lazy" decoding="async" style="object-position: 50% 25%">
+                        <img data-parallax="0.045" src="images/web/golf/DSCF3386.webp" srcset="images/web/golf/DSCF3386_s.webp 760w, images/web/golf/DSCF3386.webp 1125w" sizes="(max-width: 1024px) 100vw, 50vw" width="1125" height="2000" alt="Golfeur en fin de swing, cap blanche" loading="lazy" decoding="async" style="object-position: 50% 25%">
                     </div>
                     <span class="card__count">39 photos</span>
                     <div class="card__body">
@@ -275,9 +316,9 @@
                         <p>L'élégance du green</p>
                     </div>
                 </a>
-                <a href="gallery.html#portrait" class="card reveal-on-scroll" style="--delay: 0.1s">
+                <a href="gallery.html#portrait" class="card" data-reveal="mask" data-cursor="Explorer" style="--delay: 0.1s">
                     <div class="card__img">
-                        <img src="images/web/portrait/DB1A6329-B156-465D-AE1E-34B82695212A_s.webp" width="900" height="1200" alt="Portrait d'un homme en pull bleu marine" loading="lazy" decoding="async">
+                        <img data-parallax="0.045" src="images/web/portrait/DB1A6329-B156-465D-AE1E-34B82695212A_s.webp" width="900" height="1200" alt="Portrait d'un homme en pull bleu marine" loading="lazy" decoding="async">
                     </div>
                     <span class="card__count">6 photos</span>
                     <div class="card__body">
@@ -286,9 +327,9 @@
                         <p>L'âme du regard</p>
                     </div>
                 </a>
-                <a href="gallery.html#danse" class="card reveal-on-scroll" style="--delay: 0.2s">
+                <a href="gallery.html#danse" class="card" data-reveal="mask" data-cursor="Explorer" style="--delay: 0.2s">
                     <div class="card__img">
-                        <img src="images/web/danse/DSCF9558-2_s.webp" width="900" height="1350" alt="Danseuse en silhouette dans la fumée, bras levés" loading="lazy" decoding="async">
+                        <img data-parallax="0.045" src="images/web/danse/DSCF9558-2_s.webp" width="900" height="1350" alt="Danseuse en silhouette dans la fumée, bras levés" loading="lazy" decoding="async">
                     </div>
                     <span class="card__count">3 photos</span>
                     <div class="card__body">
@@ -297,9 +338,9 @@
                         <p>La grâce du mouvement</p>
                     </div>
                 </a>
-                <a href="gallery.html#voiture" class="card reveal-on-scroll" style="--delay: 0.3s">
+                <a href="gallery.html#voiture" class="card" data-reveal="mask" data-cursor="Explorer" style="--delay: 0.3s">
                     <div class="card__img">
-                        <img src="images/web/voiture/DSCF0893_s.webp" width="759" height="1350" alt="Avant d'une voiture grise, phare et calandre" loading="lazy" decoding="async">
+                        <img data-parallax="0.045" src="images/web/voiture/DSCF0893_s.webp" width="759" height="1350" alt="Avant d'une voiture grise, phare et calandre" loading="lazy" decoding="async">
                     </div>
                     <span class="card__count">2 photos</span>
                     <div class="card__body">
@@ -308,9 +349,9 @@
                         <p>Les lignes et la lumière</p>
                     </div>
                 </a>
-                <a href="gallery.html#nature" class="card reveal-on-scroll" style="--delay: 0.4s">
+                <a href="gallery.html#nature" class="card" data-reveal="mask" data-cursor="Explorer" style="--delay: 0.4s">
                     <div class="card__img">
-                        <img src="images/web/nature/DSCF0433_s.webp" width="759" height="1350" alt="Rose rose en gros plan" loading="lazy" decoding="async">
+                        <img data-parallax="0.045" src="images/web/nature/DSCF0433_s.webp" width="759" height="1350" alt="Rose rose en gros plan" loading="lazy" decoding="async">
                     </div>
                     <span class="card__count">9 photos</span>
                     <div class="card__body">
@@ -326,7 +367,7 @@
     <!-- CTA -->
     <section class="cta-band">
         <div class="container">
-            <h2 class="cta-band__title reveal-on-scroll">Une séance en tête&nbsp;?<br><em>Parlons-en.</em></h2>
+            <h2 class="cta-band__title" data-split="words">Une séance en tête&nbsp;?<br><em>Parlons-en.</em></h2>
             <div class="btn-row reveal-on-scroll" style="--delay: 0.12s">
                 <a href="contact.html" class="btn btn--solid">
                     <span>Me contacter</span>
@@ -367,6 +408,7 @@
                     </ul>
                 </div>
             </div>
+            <div class="footer__mega" data-split="chars" aria-hidden="true">MR VISUALS</div>
             <div class="footer__bottom">
                 <p class="footer__copy">&copy; 2026 MR VISUALS. Tous droits réservés.</p>
                 <div class="footer__socials">
@@ -382,5 +424,6 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <script src="js/motion.js"></script>
 </body>
 </html>

@@ -25,8 +25,9 @@ import sys
 import cv2
 import numpy as np
 
+import motion as mo
 import video_lib as vl
-from video_lib import Motion, ease_in_out, clamp01
+from video_lib import GOLD_LIGHT, Motion, ease_in_out, ease_out, clamp01
 
 FPS = 30
 W, H = 1920, 1080
@@ -52,10 +53,10 @@ class Panel:
             self._img = vl.load_for(self.name, self.w, H, k=1.25, gray=self.gray)
         return self._img
 
-    def frame(self, u):
+    def frame(self, u, extra_zoom=0.0):
         # dérive verticale douce, en sens opposé d'un panneau à l'autre
         e = ease_in_out(u)
-        z = self.zoom[0] + (self.zoom[1] - self.zoom[0]) * u
+        z = self.zoom[0] + (self.zoom[1] - self.zoom[0]) * u + extra_zoom
         cy = 0.5 + self.direction * (e - 0.5) * 0.55
         return vl.render_window(self.img, self.w, H, z, self.cx, cy)
 
@@ -70,9 +71,9 @@ class Scene:
             canvas[:, p.x:p.x + p.w] = p.frame(u)
         return canvas
 
-    def parts(self, u):
-        """[(x, largeur, image)] : permet un fondu panneau par panneau."""
-        return [(p.x, p.w, p.frame(u)) for p in self.panels]
+    def parts(self, u, extra_zoom=0.0):
+        """[(x, largeur, image)] : permet un changement panneau par panneau."""
+        return [(p.x, p.w, p.frame(u, extra_zoom)) for p in self.panels]
 
 
 def triptych(names, gray=(False, False, False), cxs=(0.5, 0.5, 0.5), dirs=(-1, 1, -1)):
@@ -150,18 +151,55 @@ class Hero:
         vis.sort(key=lambda v: -v[2])
         base = self.scenes[vis[0][0]].frame(vis[0][1])
         for i, u, local in vis[1:]:
-            # la nouvelle scène apparaît panneau par panneau (gauche -> droite), décalée de STAGGER
-            for k, (x, w, img) in enumerate(self.scenes[i].parts(u)):
-                a = ease_in_out((local - k * STAGGER) / (FADE - 2 * STAGGER))
-                if a > 0:
-                    base[:, x:x + w] = vl.crossfade(np.ascontiguousarray(base[:, x:x + w]), img, a)
+            self.reveal(base, i, u, local)
         return vl.to_u8(base.astype(np.float32) * self.vig)
 
 
+def _reveal(self, base, i, u, local):
+    """
+    Changement de scène « motion design » : chaque panneau de la nouvelle scène se dévoile en volet
+    vertical (en alternance montant / descendant) avec un liseré doré au bord d'attaque, arrive avec un
+    léger zoom arrière et une mise au point qui se fait ; l'ancienne image recule et s'assombrit.
+    """
+    span = FADE - 2 * STAGGER
+    for k, (x, w, img) in enumerate(self.scenes[i].parts(u, extra_zoom=0.0)):
+        q = clamp01((local - k * STAGGER) / span)
+        if q <= 0:
+            continue
+        e = ease_in_out(q)
+        reg = base[:, x:x + w]
+        if e >= 1:
+            base[:, x:x + w] = img
+            continue
+        settle = 0.10 * (1 - ease_out(q, 3))
+        if settle > 0.004:
+            img = self.scenes[i].panels[k].frame(u, extra_zoom=settle)
+        img = mo.focus_pull(img, (9 if not MOBILE else 7) * (1 - ease_out(q, 2.5)))
+        up = (k % 2 == 0)
+        yf = int(round(H * (1 - e))) if up else int(round(H * e))
+        old = (reg.astype(np.float32) * (1 - 0.40 * e))
+        shift = (30 if up else -30) * e
+        old = cv2.warpAffine(old, np.array([[1, 0, 0], [0, 1, -shift]], np.float32), (w, H),
+                             borderMode=cv2.BORDER_REPLICATE)
+        out = old
+        if up:
+            out[yf:] = img[yf:]
+        else:
+            out[:yf] = img[:yf]
+        glow = np.exp(-((np.arange(H, dtype=np.float32) - yf) / 7.0) ** 2)[:, None, None]
+        out = out + glow * (np.asarray(GOLD_LIGHT, np.float32) - out) * 0.85 * np.sin(np.pi * q) ** 0.6
+        base[:, x:x + w] = np.clip(out, 0, 255).astype(np.uint8)
+
+
+Hero.reveal = _reveal
+MOBILE = False
+
+
 def main(preview=False, mobile=False):
-    global W, H
+    global W, H, MOBILE
     if mobile:
         W, H = 720, 1280
+        MOBILE = True
     hero = Hero(mobile)
     n = int(round(hero.loop * FPS))
     print(f"boucle : {hero.loop:.1f} s ({n} images)")

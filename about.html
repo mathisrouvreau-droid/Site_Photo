@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>document.documentElement.classList.add('js')</script>
     <title>À propos — MR VISUALS</title>
     <meta name="description" content="Mathis Rouvreau, photographe derrière MR VISUALS. Découvrez mon parcours, mon matériel et ma vision de la photographie.">
     <meta name="theme-color" content="#080808">
@@ -26,6 +27,7 @@
     <noscript><style>.reveal-on-scroll{opacity:1;transform:none}</style></noscript>
 </head>
 <body class="page-about">
+    <div class="curtain" id="curtain" aria-hidden="true"><img class="curtain__mark" src="images/brand/mark-white.png" alt="" width="84" height="51"></div>
     <div class="grain-overlay" aria-hidden="true"></div>
     <div class="progress" id="progress" aria-hidden="true"></div>
     <a class="skip-link" href="#main">Aller au contenu</a>
@@ -57,7 +59,7 @@
     <header class="page-header">
         <div class="container">
             <span class="section-label reveal-up">L'histoire</span>
-            <h1 class="page-header__title reveal-up" style="--delay: 0.1s">À propos</h1>
+            <h1 class="page-header__title" data-split="chars" data-split-hero>À propos</h1>
         </div>
     </header>
 
@@ -67,14 +69,14 @@
             <div class="about__grid">
                 <div class="about__images reveal-on-scroll">
                     <div class="about__image">
-                        <div class="about__image-wrapper">
-                            <img src="images/web/portrait/DSC_8826.webp" width="1331" height="2000" alt="Mathis, photographe derrière MR VISUALS, devant un cerisier en fleurs" decoding="async">
+                        <div class="about__image-wrapper" data-reveal="mask">
+                            <img data-parallax="0.05" src="images/web/portrait/DSC_8826.webp" width="1331" height="2000" alt="Mathis, photographe derrière MR VISUALS, devant un cerisier en fleurs" decoding="async">
                         </div>
                         <div class="about__image-accent"></div>
                     </div>
                     <div class="about__image about__image--second reveal-on-scroll" style="--delay: 0.2s">
-                        <div class="about__image-wrapper">
-                            <img src="images/web/about/IMG_9961.webp" width="1500" height="2000" alt="L'appareil photo Fujifilm X-H2 et son objectif 50-140 mm" loading="lazy" decoding="async">
+                        <div class="about__image-wrapper" data-reveal="mask">
+                            <img data-parallax="0.05" src="images/web/about/IMG_9961.webp" width="1500" height="2000" alt="L'appareil photo Fujifilm X-H2 et son objectif 50-140 mm" loading="lazy" decoding="async">
                         </div>
                     </div>
                 </div>
@@ -171,6 +173,7 @@
                     </ul>
                 </div>
             </div>
+            <div class="footer__mega" data-split="chars" aria-hidden="true">MR VISUALS</div>
             <div class="footer__bottom">
                 <p class="footer__copy">&copy; 2026 MR VISUALS. Tous droits réservés.</p>
                 <div class="footer__socials">
@@ -186,5 +189,6 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <script src="js/motion.js"></script>
 </body>
 </html>

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>document.documentElement.classList.add('js')</script>
     <title>Galerie — MR VISUALS</title>
     <meta name="description" content="Galerie photo de MR VISUALS : golf (série Golden Hour), portrait, danse, automobile, nature et bientôt basket.">
     <meta name="theme-color" content="#080808">
@@ -26,6 +27,7 @@
     <noscript><style>.reveal-on-scroll{opacity:1;transform:none}</style></noscript>
 </head>
 <body class="page-gallery">
+    <div class="curtain" id="curtain" aria-hidden="true"><img class="curtain__mark" src="images/brand/mark-white.png" alt="" width="84" height="51"></div>
     <div class="grain-overlay" aria-hidden="true"></div>
     <div class="progress" id="progress" aria-hidden="true"></div>
     <a class="skip-link" href="#main">Aller au contenu</a>
@@ -57,7 +59,7 @@
     <header class="page-header">
         <div class="container">
             <span class="section-label reveal-up">Portfolio</span>
-            <h1 class="page-header__title reveal-up" style="--delay: 0.1s">Galerie</h1>
+            <h1 class="page-header__title" data-split="chars" data-split-hero>Galerie</h1>
             <p class="page-header__lede reveal-up" style="--delay: 0.2s">Toutes les collections au même endroit. Cliquez sur une photo pour l'agrandir, puis naviguez avec les flèches ou en glissant.</p>
         </div>
     </header>
@@ -375,6 +377,7 @@
                     </ul>
                 </div>
             </div>
+            <div class="footer__mega" data-split="chars" aria-hidden="true">MR VISUALS</div>
             <div class="footer__bottom">
                 <p class="footer__copy">&copy; 2026 MR VISUALS. Tous droits réservés.</p>
                 <div class="footer__socials">
@@ -390,5 +393,6 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <script src="js/motion.js"></script>
 </body>
 </html>

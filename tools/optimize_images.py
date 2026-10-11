@@ -32,6 +32,12 @@ ROOT_FILES = {
     "DSC_8825.jpeg": "portrait",
     "DSC_8826.jpeg": "portrait",
     "IMG_9961.jpeg": "about",
+    "materiel.webp": "about",
+}
+
+# Recadrage (gauche, haut, droite, bas) appliqué avant redimensionnement : on ne garde que le matériel
+CROPS = {
+    "materiel": (0, 400, 1940, 1385),
 }
 
 LARGE = 2000          # côté long max de la grande version
@@ -79,6 +85,8 @@ def process(src, cat):
     with Image.open(src) as im:
         im = ImageOps.exif_transpose(im)
         im = to_srgb(im)
+        if stem in CROPS:
+            im = im.crop(CROPS[stem])
 
         big = im.copy()
         big.thumbnail((LARGE, LARGE), Image.LANCZOS)

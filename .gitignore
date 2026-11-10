@@ -1,2 +1,7 @@
 __pycache__/
 tools/_preview_*.jpg
+analytics/node_modules/
+analytics/.wrangler/
+analytics/.dev.vars
+analytics/MOT-DE-PASSE.txt
+analytics/package-lock.json.bak

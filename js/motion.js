@@ -282,9 +282,14 @@
             };
             requestAnimationFrame(step);
         }
+        let swingDone = false;
         function setSwing(idx, animate = true) {
             if (idx === swingIdx) return;
             swingIdx = idx;
+            if (idx === 3 && !swingDone) {
+                swingDone = true;
+                document.dispatchEvent(new CustomEvent('mrv:event', { detail: { name: 'swing_done' } }));
+            }
             swingFrames.forEach((f, i) => f.classList.toggle('is-active', i === idx));
             swingSteps.forEach((s, i) => { s.classList.toggle('is-active', i === idx); s.classList.toggle('is-done', i < idx); });
             const d = SWING[idx];

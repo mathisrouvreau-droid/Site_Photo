@@ -5,6 +5,9 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Mesure d'audience anonyme : js/analytics.js écoute cet événement (rien n'est envoyé sans lui)
+    const fire = (name, prop) => document.dispatchEvent(new CustomEvent('mrv:event', { detail: { name, prop } }));
     const saveData = !!(navigator.connection && navigator.connection.saveData);
 
     // --- Navigation scroll effect ---
@@ -106,6 +109,14 @@ document.addEventListener('DOMContentLoaded', () => {
         video.addEventListener('play', reflect);
         video.addEventListener('pause', reflect);
 
+        if (lazy) {
+            let viewTimer = null, counted = false;
+            video.addEventListener('play', () => {
+                if (!counted) viewTimer = setTimeout(() => { counted = true; fire('reel_view'); }, 3000);
+            });
+            video.addEventListener('pause', () => clearTimeout(viewTimer));
+        }
+
         if ('IntersectionObserver' in window) {
             const io = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -155,6 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!btn) return false;
         filterBtns.forEach(b => b.classList.toggle('active', b === btn));
         filterGallery(filter);
+        fire('gallery_filter', filter);
         if (updateHash) history.replaceState(null, '', filter === 'all' ? location.pathname : `#${filter}`);
         btn.scrollIntoView({ block: 'nearest', inline: 'center' });
         return true;
@@ -263,6 +275,8 @@ document.addEventListener('DOMContentLoaded', () => {
         currentItems = Array.from(document.querySelectorAll('.gallery__item:not(.hidden)'));
         lastFocus = item;
         flipFrom = item.querySelector('img').getBoundingClientRect();
+        const full = (item.dataset.full || '').match(/web\/([^/]+)\/([^/.]+)\.webp$/);
+        fire('gallery_open', full ? `${full[1]}/${full[2]}` : item.dataset.category);
         lightbox.classList.add('active');
         lightbox.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
@@ -362,6 +376,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 if (response.ok) {
+                    fire('contact_submit', data.subject || '');
                     contactForm.innerHTML = `
                         <div class="form__success">
                             <span class="form__success-icon">&check;</span>

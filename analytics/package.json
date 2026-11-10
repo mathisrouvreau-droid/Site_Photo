@@ -1,0 +1,14 @@
+{
+  "name": "mrvisuals-stats",
+  "private": true,
+  "description": "Mesure d'audience anonyme de MR VISUALS (Cloudflare Worker + D1)",
+  "scripts": {
+    "dev": "wrangler dev --local --port 8787",
+    "db:local": "wrangler d1 execute DB --local --file=schema.sql",
+    "db:remote": "wrangler d1 execute DB --remote --file=schema.sql",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^4"
+  }
+}

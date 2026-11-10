@@ -1,0 +1,18 @@
+# MR VISUALS — mesure d'audience (Cloudflare Worker + D1)
+name = "mrvisuals-stats"
+main = "worker.js"
+compatibility_date = "2025-09-01"
+
+# Sites autorisés à envoyer des visites / lire les stats (séparés par des virgules).
+# Si tu ajoutes un nom de domaine à ton site, ajoute-le ici puis relance : npm run deploy
+[vars]
+ALLOWED_ORIGINS = "https://mathisrouvreau-droid.github.io"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "mrvisuals-stats"
+database_id = "fff8f7c2-9a7d-4925-bc04-c022776614c9"
+
+# nettoyage quotidien des très vieilles données
+[triggers]
+crons = ["17 3 * * *"]

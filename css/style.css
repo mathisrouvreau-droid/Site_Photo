@@ -2655,6 +2655,87 @@ button {
     }
 }
 
+/* --- Page légale (confidentialité) --- */
+.legal {
+    padding-bottom: 120px;
+}
+
+.legal__body {
+    max-width: 720px;
+}
+
+.legal__body .legal__lede {
+    font-family: var(--font-display);
+    font-size: clamp(1.3rem, 2.2vw, 1.7rem);
+    font-weight: 300;
+    line-height: 1.5;
+    color: var(--white);
+    margin-bottom: 40px;
+}
+
+.legal__body h2 {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 400;
+    letter-spacing: 0.03em;
+    margin: 44px 0 14px;
+}
+
+.legal__body p,
+.legal__body li {
+    font-size: 0.95rem;
+    color: var(--gray-light);
+    line-height: 1.8;
+}
+
+.legal__body ul {
+    list-style: none;
+    display: grid;
+    gap: 8px;
+}
+
+.legal__body li {
+    position: relative;
+    padding-left: 22px;
+}
+
+.legal__body li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.85em;
+    width: 10px;
+    height: 1px;
+    background: var(--accent);
+}
+
+.legal__body strong {
+    color: var(--white);
+    font-weight: 400;
+}
+
+.legal__body a {
+    color: var(--white);
+    border-bottom: 1px solid var(--accent-dark);
+    transition: color 0.3s;
+}
+
+.legal__body a:hover {
+    color: var(--accent);
+}
+
+.footer__copy a {
+    margin-left: 14px;
+    color: inherit;
+    border-bottom: 1px solid var(--dark-3);
+    transition: color 0.3s, border-color 0.3s;
+}
+
+.footer__copy a:hover {
+    color: var(--accent);
+    border-color: var(--accent-dark);
+}
+
 /* --- Page transition --- */
 body {
     animation: pageIn 0.6s var(--ease-out-expo) forwards;

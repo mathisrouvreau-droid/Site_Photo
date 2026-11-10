@@ -16,6 +16,25 @@ Petits scripts pour préparer les images et fabriquer les vidéos du site.
    ```
 
 Pour choisir l'ordre d'une série, modifier `GOLDEN_ORDER` en haut de `tools/build_gallery.py`.
+
+**Texte alternatif** : pour une nouvelle photo, ajouter une ligne dans `ALT` de `tools/photo_meta.py` (un texte court qui décrit ce qu'on voit : utile à Google Images et aux lecteurs d'écran).
+
+## Pages de collection et plan du site
+
+Chaque collection (golf, portrait, danse, automobile, nature) a sa propre page pour être référencée séparément.
+Les textes et titres se modifient dans `COLLECTIONS` de `tools/photo_meta.py`, puis :
+```
+python tools/make_og_collections.py   # images de partage (WhatsApp, LinkedIn...), si les photos mises en avant changent
+python tools/build_collections.py     # pages + plan du site (sitemap.xml) + robots.txt
+```
+
+## Nom de domaine
+
+Pour passer du lien github.io à un nom de domaine, une seule commande met à jour toutes les adresses (pages, plan du site, données structurées) :
+```
+python tools/set_domain.py https://mathisrouvreau-droid.github.io/Site_Photo https://mrvisuals.fr
+```
+Pense ensuite à ajouter le nouveau domaine dans `analytics/wrangler.toml` (`ALLOWED_ORIGINS`) puis `npx wrangler deploy` (sinon le compteur de visites ne reçoit plus rien).
 Les nombres de photos affichés à la main sur l'accueil et la page À propos (39, 6, 3, 2, 9) sont à mettre à jour si besoin.
 
 ## Vidéos

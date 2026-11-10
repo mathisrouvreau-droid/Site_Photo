@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page introuvable — MR VISUALS</title>
+    <meta name="robots" content="noindex">
+    <meta name="theme-color" content="#080808">
+    <script>
+        // Cette page peut s'afficher à n'importe quelle adresse du site : on fixe la racine pour que les liens marchent partout.
+        (function () {
+            var base = /^\/Site_Photo(\/|$)/.test(location.pathname) ? '/Site_Photo/' : '/';
+            document.write('<base href="' + base + '">');
+        })();
+    </script>
+    <link rel="icon" type="image/png" href="images/brand/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .nf {
+            min-height: 100vh;
+            min-height: 100svh;
+            display: grid;
+            place-items: center;
+            padding: 40px 24px;
+            text-align: center;
+            background: radial-gradient(ellipse 60% 50% at 50% 40%, rgba(184, 148, 90, 0.10), transparent 70%);
+        }
+        .nf__mark { width: 84px; margin: 0 auto 30px; opacity: 0.9; }
+        .nf__code { font-family: var(--font-display); font-size: clamp(6rem, 22vw, 14rem); font-weight: 300; line-height: 0.9; color: var(--accent); letter-spacing: 0.04em; }
+        .nf__title { font-family: var(--font-display); font-size: clamp(1.6rem, 4vw, 2.6rem); font-weight: 300; font-style: italic; margin: 18px 0 14px; }
+        .nf__text { color: var(--gray-light); max-width: 460px; margin: 0 auto 34px; }
+        .nf__links { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 26px; margin-top: 34px; font-size: 0.76rem; letter-spacing: 0.16em; text-transform: uppercase; }
+        .nf__links a { color: var(--gray-light); border-bottom: 1px solid var(--dark-3); padding-bottom: 2px; }
+        .nf__links a:hover { color: var(--accent); border-color: var(--accent-dark); }
+    </style>
+</head>
+<body class="page-404">
+    <div class="grain-overlay" aria-hidden="true"></div>
+    <main class="nf">
+        <div>
+            <img class="nf__mark" src="images/brand/mark-white.png" alt="MR VISUALS" width="84" height="51">
+            <div class="nf__code">404</div>
+            <h1 class="nf__title">Cette page n'existe pas.</h1>
+            <p class="nf__text">Le lien est peut-être ancien ou mal recopié. Retrouvez le portfolio depuis l'accueil.</p>
+            <div class="btn-row" style="justify-content:center">
+                <a href="index.html" class="btn btn--solid"><span>Retour à l'accueil</span></a>
+                <a href="gallery.html" class="btn btn--ghost"><span>Voir la galerie</span></a>
+            </div>
+            <nav class="nf__links" aria-label="Collections">
+                <a href="golf.html">Golf</a><a href="portrait.html">Portrait</a><a href="danse.html">Danse</a><a href="automobile.html">Automobile</a><a href="nature.html">Nature</a><a href="contact.html">Contact</a>
+            </nav>
+        </div>
+    </main>
+</body>
+</html>

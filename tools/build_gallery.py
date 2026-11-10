@@ -19,6 +19,8 @@ import json
 import os
 import re
 
+import photo_meta
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 WEB = "images/web"
 
@@ -38,14 +40,6 @@ GOLDEN_ORDER = [
     "DSCF3069", "DSCF3516", "DSCF3472", "DSCF3604", "DSCF3601", "DSCF3603", "DSCF3053",
 ]
 
-ALT = {
-    "golf": "Golf — swing et gestes du jeu",
-    "golden-hour": "Golf en golden hour — lumière dorée de fin de journée",
-    "portrait": "Portrait",
-    "danse": "Danse — spectacle sur scène",
-    "voiture": "Automobile — détails et lignes",
-    "nature": "Nature — fleurs et paysages",
-}
 
 
 def sort_cat(cat, items):
@@ -73,17 +67,23 @@ def interleave(by_cat):
     return [(cat, p) for _, cat, p in keyed]
 
 
-def item_html(cat, label, p):
+def alt_of(cat, label, p):
+    """Description réelle de la photo (tools/photo_meta.py), sinon un texte de secours."""
+    return photo_meta.ALT.get(p["stem"]) or f"Photographie — {label}"
+
+
+def item_html(cat, label, p, priority=False):
     base = f"{WEB}/{p['cat']}/{p['stem']}"
     small, large = base + "_s.webp", base + ".webp"
-    alt = ALT["golden-hour"] if p["series"] == "golden-hour" else ALT.get(cat, label)
+    alt = alt_of(cat, label, p)
+    load = 'fetchpriority="high" decoding="async"' if priority else 'loading="lazy" decoding="async"'
     return (
         f'                <a class="gallery__item" href="{large}" data-category="{cat}"'
         f'{" data-series=" + chr(34) + p["series"] + chr(34) if p["series"] else ""}'
         f' data-full="{large}" aria-label="Agrandir — {html.escape(label)}">\n'
         f'                    <img src="{small}" srcset="{small} {p["w"]}w, {large} {p["lw"]}w" '
         f'sizes="(max-width: 520px) 100vw, (max-width: 1024px) 50vw, 33vw" '
-        f'width="{p["w"]}" height="{p["h"]}" alt="{html.escape(alt)}" loading="lazy" decoding="async">\n'
+        f'width="{p["w"]}" height="{p["h"]}" alt="{html.escape(alt)}" {load}>\n'
         f'                    <span class="gallery__item-overlay"><span class="gallery__item-cat">{html.escape(label)}</span>'
         f'<span class="gallery__item-plus" aria-hidden="true">+</span></span>\n'
         f'                </a>\n'
@@ -111,7 +111,7 @@ def main():
 
     ordered = interleave(by_cat)
 
-    grid = "".join(item_html(cat, labels[cat], p) for cat, p in ordered)
+    grid = "".join(item_html(cat, labels[cat], p, priority=(i < 3)) for i, (cat, p) in enumerate(ordered))
     grid += ('                <div class="gallery__coming-soon hidden" data-category="basket">\n'
              '                    <span class="gallery__coming-soon-text">Basket — à venir</span>\n'
              '                </div>\n')

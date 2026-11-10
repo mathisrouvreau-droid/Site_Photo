@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script>document.documentElement.classList.add('js')</script>
-    <title>MR VISUALS — Photographe golf, portrait, danse &amp; automobile</title>
+    <title>Photographe en Vendée — Golf, portrait, danse | MR VISUALS</title>
     <meta name="description" content="MR VISUALS — Mathis Rouvreau, photographe en Vendée. Golf, portrait, danse, automobile et nature. Capturer l'instant, sublimer l'émotion.">
     <meta name="theme-color" content="#080808">
     <link rel="canonical" href="https://mathisrouvreau-droid.github.io/Site_Photo/">
@@ -26,18 +26,107 @@
     <link rel="stylesheet" href="css/style.css">
     <noscript><style>.reveal-on-scroll{opacity:1;transform:none}</style></noscript>
     <script type="application/ld+json">
-    {
+{
         "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Mathis Rouvreau",
-        "alternateName": "MR VISUALS",
-        "jobTitle": "Photographe",
-        "url": "https://mathisrouvreau-droid.github.io/Site_Photo/",
-        "image": "https://mathisrouvreau-droid.github.io/Site_Photo/images/og.jpg",
-        "address": { "@type": "PostalAddress", "addressLocality": "Mortagne-sur-Sèvre", "addressRegion": "Vendée", "addressCountry": "FR" },
-        "sameAs": [
-            "https://www.instagram.com/mpict_rv12/",
-            "https://www.linkedin.com/in/mathis-rouvreau-aa6096305/"
+        "@graph": [
+            {
+                "@type": "WebSite",
+                "@id": "https://mathisrouvreau-droid.github.io/Site_Photo/#site",
+                "url": "https://mathisrouvreau-droid.github.io/Site_Photo/",
+                "name": "MR VISUALS",
+                "inLanguage": "fr-FR",
+                "publisher": {
+                    "@id": "https://mathisrouvreau-droid.github.io/Site_Photo/#business"
+                }
+            },
+            {
+                "@type": [
+                    "ProfessionalService",
+                    "LocalBusiness"
+                ],
+                "@id": "https://mathisrouvreau-droid.github.io/Site_Photo/#business",
+                "name": "MR VISUALS",
+                "alternateName": "Mathis Rouvreau, photographe",
+                "description": "Photographe en Vendée : golf, portrait, danse et spectacle, automobile et nature.",
+                "url": "https://mathisrouvreau-droid.github.io/Site_Photo/",
+                "image": "https://mathisrouvreau-droid.github.io/Site_Photo/images/og.jpg",
+                "logo": "https://mathisrouvreau-droid.github.io/Site_Photo/images/brand/favicon.png",
+                "email": "mathis.rouvreau@gmail.com",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Mortagne-sur-Sèvre",
+                    "addressRegion": "Vendée",
+                    "addressCountry": "FR"
+                },
+                "areaServed": [
+                    {
+                        "@type": "AdministrativeArea",
+                        "name": "Vendée"
+                    },
+                    {
+                        "@type": "AdministrativeArea",
+                        "name": "Pays de la Loire"
+                    }
+                ],
+                "founder": {
+                    "@id": "https://mathisrouvreau-droid.github.io/Site_Photo/#mathis"
+                },
+                "knowsAbout": [
+                    "Photographie de golf",
+                    "Photographie de portrait",
+                    "Photographie de danse et de spectacle",
+                    "Photographie automobile",
+                    "Photographie de nature"
+                ],
+                "makesOffer": [
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Service",
+                            "name": "Séance photo de golf"
+                        }
+                    },
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Service",
+                            "name": "Séance portrait en extérieur"
+                        }
+                    },
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Service",
+                            "name": "Photographie de spectacle de danse"
+                        }
+                    },
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Service",
+                            "name": "Photographie automobile"
+                        }
+                    }
+                ],
+                "sameAs": [
+                    "https://www.instagram.com/mpict_rv12/",
+                    "https://www.linkedin.com/in/mathis-rouvreau-aa6096305/"
+                ]
+            },
+            {
+                "@type": "Person",
+                "@id": "https://mathisrouvreau-droid.github.io/Site_Photo/#mathis",
+                "name": "Mathis Rouvreau",
+                "jobTitle": "Photographe",
+                "worksFor": {
+                    "@id": "https://mathisrouvreau-droid.github.io/Site_Photo/#business"
+                },
+                "url": "https://mathisrouvreau-droid.github.io/Site_Photo/about.html",
+                "sameAs": [
+                    "https://www.instagram.com/mpict_rv12/",
+                    "https://www.linkedin.com/in/mathis-rouvreau-aa6096305/"
+                ]
+            }
         ]
     }
     </script>
@@ -132,19 +221,19 @@
     <div class="marquee" aria-hidden="true">
         <div class="marquee__track">
             <div class="marquee__group">
-                <a class="marquee__item" href="gallery.html#golf" tabindex="-1">Golf</a>
-                <a class="marquee__item" href="gallery.html#portrait" tabindex="-1">Portrait</a>
-                <a class="marquee__item" href="gallery.html#danse" tabindex="-1">Danse</a>
-                <a class="marquee__item" href="gallery.html#voiture" tabindex="-1">Automobile</a>
-                <a class="marquee__item" href="gallery.html#nature" tabindex="-1">Nature</a>
+                <a class="marquee__item" href="golf.html" tabindex="-1">Golf</a>
+                <a class="marquee__item" href="portrait.html" tabindex="-1">Portrait</a>
+                <a class="marquee__item" href="danse.html" tabindex="-1">Danse</a>
+                <a class="marquee__item" href="automobile.html" tabindex="-1">Automobile</a>
+                <a class="marquee__item" href="nature.html" tabindex="-1">Nature</a>
                 <a class="marquee__item" href="gallery.html#basket" tabindex="-1">Basket</a>
             </div>
             <div class="marquee__group">
-                <a class="marquee__item" href="gallery.html#golf" tabindex="-1">Golf</a>
-                <a class="marquee__item" href="gallery.html#portrait" tabindex="-1">Portrait</a>
-                <a class="marquee__item" href="gallery.html#danse" tabindex="-1">Danse</a>
-                <a class="marquee__item" href="gallery.html#voiture" tabindex="-1">Automobile</a>
-                <a class="marquee__item" href="gallery.html#nature" tabindex="-1">Nature</a>
+                <a class="marquee__item" href="golf.html" tabindex="-1">Golf</a>
+                <a class="marquee__item" href="portrait.html" tabindex="-1">Portrait</a>
+                <a class="marquee__item" href="danse.html" tabindex="-1">Danse</a>
+                <a class="marquee__item" href="automobile.html" tabindex="-1">Automobile</a>
+                <a class="marquee__item" href="nature.html" tabindex="-1">Nature</a>
                 <a class="marquee__item" href="gallery.html#basket" tabindex="-1">Basket</a>
             </div>
         </div>
@@ -174,6 +263,12 @@
                             <span class="intro__stat-label">Fujifilm X-H2 · 16–140&nbsp;mm</span>
                         </div>
                     </div>
+                    <p class="intro__local reveal-on-scroll" style="--delay: 0.2s">
+                        Basé à <strong>Mortagne-sur-Sèvre</strong>, en Vendée, j'interviens dans tout le Grand Ouest&nbsp;:
+                        <a href="golf.html">clubs et compétitions de golf</a>, <a href="portrait.html">séances portrait</a>,
+                        <a href="danse.html">spectacles de danse</a>, <a href="automobile.html">photographie automobile</a>.
+                        <a href="contact.html">Parlons de votre projet</a>.
+                    </p>
                 </div>
             </div>
         </div>
@@ -225,7 +320,7 @@
                 </div>
                 <div class="series__side reveal-on-scroll" style="--delay: 0.16s">
                     <p>Une fin de journée sur le parcours : la lumière rasante, les gestes, les regards. 23&nbsp;photographies de golf à retrouver dans la galerie.</p>
-                    <a href="gallery.html#golf" class="btn">
+                    <a href="golf.html" class="btn">
                         <span>Voir la série</span>
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </a>
@@ -233,19 +328,19 @@
             </div>
 
             <div class="series__grid">
-                <a href="gallery.html#golf" class="series__item" data-reveal="mask" data-cursor="Voir" aria-label="Golf — Golden Hour, photo 1">
+                <a href="golf.html" class="series__item" data-reveal="mask" data-cursor="Voir" aria-label="Golf — Golden Hour, photo 1">
                     <img data-parallax="0.05" src="images/web/golf/DSCF3270.webp" srcset="images/web/golf/DSCF3270_s.webp 900w, images/web/golf/DSCF3270.webp 1418w" sizes="(max-width: 768px) 100vw, 40vw" width="1418" height="2000" alt="Golfeuse en plein swing, lumière dorée de fin de journée" loading="lazy" decoding="async" style="object-position: 50% 30%">
                     <span class="series__tag">Le swing</span>
                 </a>
-                <a href="gallery.html#golf" class="series__item" data-reveal="mask" data-cursor="Voir" style="--delay: 0.1s" aria-label="Golf — Golden Hour, photo 2">
+                <a href="golf.html" class="series__item" data-reveal="mask" data-cursor="Voir" style="--delay: 0.1s" aria-label="Golf — Golden Hour, photo 2">
                     <img data-parallax="0.05" src="images/web/golf/DSCF3314_s.webp" srcset="images/web/golf/DSCF3314_s.webp 760w, images/web/golf/DSCF3314.webp 1125w" sizes="(max-width: 768px) 50vw, 24vw" width="760" height="1350" alt="Portrait d'une golfeuse souriante en polo bleu" loading="lazy" decoding="async">
                     <span class="series__tag">Le sourire</span>
                 </a>
-                <a href="gallery.html#golf" class="series__item" data-reveal="mask" data-cursor="Voir" style="--delay: 0.2s" aria-label="Golf — Golden Hour, photo 3">
+                <a href="golf.html" class="series__item" data-reveal="mask" data-cursor="Voir" style="--delay: 0.2s" aria-label="Golf — Golden Hour, photo 3">
                     <img data-parallax="0.05" src="images/web/golf/DSCF3226_s.webp" srcset="images/web/golf/DSCF3226_s.webp 900w, images/web/golf/DSCF3226.webp 1333w" sizes="(max-width: 768px) 50vw, 32vw" width="900" height="1350" alt="Silhouette d'un golfeur, driver levé vers le ciel bleu" loading="lazy" decoding="async" style="object-position: 50% 30%">
                     <span class="series__tag">Le ciel</span>
                 </a>
-                <a href="gallery.html#golf" class="series__item" data-reveal="mask" data-cursor="Voir" style="--delay: 0.3s" aria-label="Golf — Golden Hour, photo 4">
+                <a href="golf.html" class="series__item" data-reveal="mask" data-cursor="Voir" style="--delay: 0.3s" aria-label="Golf — Golden Hour, photo 4">
                     <img data-parallax="0.05" src="images/web/golf/DSCF3491_s.webp" srcset="images/web/golf/DSCF3491_s.webp 900w, images/web/golf/DSCF3491.webp 2000w" sizes="(max-width: 768px) 100vw, 56vw" width="900" height="696" alt="Golfeuse à l'approche, voiturette de golf au premier plan" loading="lazy" decoding="async" style="object-position: 70% 50%">
                     <span class="series__tag">Le parcours</span>
                 </a>
@@ -305,7 +400,7 @@
             <span class="section-label reveal-on-scroll">05 — Collections</span>
             <h2 class="section-title" data-split="words">Galeries sélectionnées</h2>
             <div class="collections__grid">
-                <a href="gallery.html#golf" class="card" data-reveal="mask" data-cursor="Explorer">
+                <a href="golf.html" class="card" data-reveal="mask" data-cursor="Explorer">
                     <div class="card__img">
                         <img data-parallax="0.045" src="images/web/golf/DSCF3386.webp" srcset="images/web/golf/DSCF3386_s.webp 760w, images/web/golf/DSCF3386.webp 1125w" sizes="(max-width: 1024px) 100vw, 50vw" width="1125" height="2000" alt="Golfeur en fin de swing, cap blanche" loading="lazy" decoding="async" style="object-position: 50% 25%">
                     </div>
@@ -316,7 +411,7 @@
                         <p>L'élégance du green</p>
                     </div>
                 </a>
-                <a href="gallery.html#portrait" class="card" data-reveal="mask" data-cursor="Explorer" style="--delay: 0.1s">
+                <a href="portrait.html" class="card" data-reveal="mask" data-cursor="Explorer" style="--delay: 0.1s">
                     <div class="card__img">
                         <img data-parallax="0.045" src="images/web/portrait/DB1A6329-B156-465D-AE1E-34B82695212A_s.webp" width="900" height="1200" alt="Portrait d'un homme en pull bleu marine" loading="lazy" decoding="async">
                     </div>
@@ -327,7 +422,7 @@
                         <p>L'âme du regard</p>
                     </div>
                 </a>
-                <a href="gallery.html#danse" class="card" data-reveal="mask" data-cursor="Explorer" style="--delay: 0.2s">
+                <a href="danse.html" class="card" data-reveal="mask" data-cursor="Explorer" style="--delay: 0.2s">
                     <div class="card__img">
                         <img data-parallax="0.045" src="images/web/danse/DSCF9558-2_s.webp" width="900" height="1350" alt="Danseuse en silhouette dans la fumée, bras levés" loading="lazy" decoding="async">
                     </div>
@@ -338,7 +433,7 @@
                         <p>La grâce du mouvement</p>
                     </div>
                 </a>
-                <a href="gallery.html#voiture" class="card" data-reveal="mask" data-cursor="Explorer" style="--delay: 0.3s">
+                <a href="automobile.html" class="card" data-reveal="mask" data-cursor="Explorer" style="--delay: 0.3s">
                     <div class="card__img">
                         <img data-parallax="0.045" src="images/web/voiture/DSCF0893_s.webp" width="759" height="1350" alt="Avant d'une voiture grise, phare et calandre" loading="lazy" decoding="async">
                     </div>
@@ -349,7 +444,7 @@
                         <p>Les lignes et la lumière</p>
                     </div>
                 </a>
-                <a href="gallery.html#nature" class="card" data-reveal="mask" data-cursor="Explorer" style="--delay: 0.4s">
+                <a href="nature.html" class="card" data-reveal="mask" data-cursor="Explorer" style="--delay: 0.4s">
                     <div class="card__img">
                         <img data-parallax="0.045" src="images/web/nature/DSCF0433_s.webp" width="759" height="1350" alt="Rose rose en gros plan" loading="lazy" decoding="async">
                     </div>
@@ -397,6 +492,16 @@
                         <li><a href="gallery.html">Galerie</a></li>
                         <li><a href="about.html">À propos</a></li>
                         <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer__col">
+                    <h4>Collections</h4>
+                    <ul>
+                        <li><a href="golf.html">Golf</a></li>
+                        <li><a href="portrait.html">Portrait</a></li>
+                        <li><a href="danse.html">Danse</a></li>
+                        <li><a href="automobile.html">Automobile</a></li>
+                        <li><a href="nature.html">Nature</a></li>
                     </ul>
                 </div>
                 <div class="footer__col">

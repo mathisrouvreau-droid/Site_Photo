@@ -30,11 +30,12 @@ python tools/build_collections.py     # pages + plan du site (sitemap.xml) + rob
 
 ## Nom de domaine
 
-Pour passer du lien github.io à un nom de domaine, une seule commande met à jour toutes les adresses (pages, plan du site, données structurées) :
+Le site est en ligne sur **https://mrvisuals.fr** (nom de domaine OVH, DNS vers GitHub Pages, fichier `CNAME` à la racine du dépôt : ne pas le supprimer).
+Pour changer un jour d'adresse, une seule commande met à jour toutes les adresses (pages, plan du site, données structurées) :
 ```
-python tools/set_domain.py https://mathisrouvreau-droid.github.io/Site_Photo https://mrvisuals.fr
+python tools/set_domain.py https://mrvisuals.fr https://nouvelle-adresse.fr
 ```
-Pense ensuite à ajouter le nouveau domaine dans `analytics/wrangler.toml` (`ALLOWED_ORIGINS`) puis `npx wrangler deploy` (sinon le compteur de visites ne reçoit plus rien).
+Pense ensuite à ajouter la nouvelle adresse dans `analytics/wrangler.toml` (`ALLOWED_ORIGINS`) puis `npx wrangler deploy` (sinon le compteur de visites ne reçoit plus rien), et à mettre à jour le fichier `CNAME`.
 Les nombres de photos affichés à la main sur l'accueil et la page À propos (39, 6, 3, 2, 9) sont à mettre à jour si besoin.
 
 ## Vidéos

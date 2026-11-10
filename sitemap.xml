@@ -1,45 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-    <url><loc>https://mathisrouvreau-droid.github.io/Site_Photo/</loc><lastmod>2026-11-10</lastmod><changefreq>monthly</changefreq><priority>1.0</priority></url>
-    <url><loc>https://mathisrouvreau-droid.github.io/Site_Photo/gallery.html</loc><lastmod>2026-11-10</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-    <url><loc>https://mathisrouvreau-droid.github.io/Site_Photo/golf.html</loc><lastmod>2026-11-10</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
-        <image:image><image:loc>https://mathisrouvreau-droid.github.io/Site_Photo/images/web/golf/DSCF3270.webp</image:loc><image:caption>Golfeuse en plein swing, finish du coup, lumière dorée</image:caption></image:image>
-        <image:image><image:loc>https://mathisrouvreau-droid.github.io/Site_Photo/images/web/golf/DSCF3314.webp</image:loc><image:caption>Portrait d&#x27;une golfeuse souriante en polo bleu dans une voiturette de golf</image:caption></image:image>
-        <image:image><image:loc>https://mathisrouvreau-droid.github.io/Site_Photo/images/web/golf/DSCF3226.webp</image:loc><image:caption>Silhouette d&#x27;un golfeur, driver levé vers le ciel bleu</image:caption></image:image>
-        <image:image><image:loc>https://mathisrouvreau-droid.github.io/Site_Photo/images/web/golf/DSCF3084.webp</image:loc><image:caption>Portrait de profil d&#x27;une golfeuse en polo bleu, lumière dorée</image:caption></image:image>
-        <image:image><image:loc>https://mathisrouvreau-droid.github.io/Site_Photo/images/web/golf/DSCF3371.webp</image:loc><image:caption>Swing décomposé, l&#x27;adresse : golfeur à casquette face à la balle</image:caption></image:image>
-        <image:image><image:loc>https://mathisrouvreau-droid.github.io/Site_Photo/images/web/golf/DSCF3381.webp</image:loc><image:caption>Swing décomposé, la montée : club levé à la verticale</image:caption></image:image>
-        <image:image><image:loc>https://mathisrouvreau-droid.github.io/Site_Photo/images/web/golf/DSCF3382.webp</image:loc><image:caption>Swing décomposé, la descente : mains basses avant l&#x27;impact</image:caption></image:image>
-        <image:image><image:loc>https://mathisrouvreau-droid.github.io/Site_Photo/images/web/golf/DSCF3386.webp</image:loc><image:caption>Swing décomposé, le finish : club passé au-dessus de l&#x27;épaule</image:caption></image:image>
+    <url><loc>https://mrvisuals.fr/</loc><lastmod>2026-11-10</lastmod><changefreq>monthly</changefreq><priority>1.0</priority></url>
+    <url><loc>https://mrvisuals.fr/gallery.html</loc><lastmod>2026-11-10</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+    <url><loc>https://mrvisuals.fr/golf.html</loc><lastmod>2026-11-10</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
+        <image:image><image:loc>https://mrvisuals.fr/images/web/golf/DSCF3270.webp</image:loc><image:caption>Golfeuse en plein swing, finish du coup, lumière dorée</image:caption></image:image>
+        <image:image><image:loc>https://mrvisuals.fr/images/web/golf/DSCF3314.webp</image:loc><image:caption>Portrait d&#x27;une golfeuse souriante en polo bleu dans une voiturette de golf</image:caption></image:image>
+        <image:image><image:loc>https://mrvisuals.fr/images/web/golf/DSCF3226.webp</image:loc><image:caption>Silhouette d&#x27;un golfeur, driver levé vers le ciel bleu</image:caption></image:image>
+        <image:image><image:loc>https://mrvisuals.fr/images/web/golf/DSCF3084.webp</image:loc><image:caption>Portrait de profil d&#x27;une golfeuse en polo bleu, lumière dorée</image:caption></image:image>
+        <image:image><image:loc>https://mrvisuals.fr/images/web/golf/DSCF3371.webp</image:loc><image:caption>Swing décomposé, l&#x27;adresse : golfeur à casquette face à la balle</image:caption></image:image>
+        <image:image><image:loc>https://mrvisuals.fr/images/web/golf/DSCF3381.webp</image:loc><image:caption>Swing décomposé, la montée : club levé à la verticale</image:caption></image:image>
+        <image:image><image:loc>https://mrvisuals.fr/images/web/golf/DSCF3382.webp</image:loc><image:caption>Swing décomposé, la descente : mains basses avant l&#x27;impact</image:caption></image:image>
+        <image:image><image:loc>https://mrvisuals.fr/images/web/golf/DSCF3386.webp</image:loc><image:caption>Swing décomposé, le finish : club passé au-dessus de l&#x27;épaule</image:caption></image:image>
     </url>
-    <url><loc>https://mathisrouvreau-droid.github.io/Site_Photo/portrait.html</loc><lastmod>2026-11-10</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
-        <image:image><image:loc>https://mathisrouvreau-droid.github.io/Site_Photo/images/web/portrait/DSC_8825.webp</image:loc><image:caption>Autoportrait de Mathis, photographe, appareil en main devant un cerisier en fleurs</image:caption></image:image>
-        <image:image><image:loc>https://mathisrouvreau-droid.github.io/Site_Photo/images/web/portrait/DSC_8826.webp</image:loc><image:caption>Mathis souriant, appareil photo à la main, devant un cerisier en fleurs</image:caption></image:image>
-        <image:image><image:loc>https://mathisrouvreau-droid.github.io/Site_Photo/images/web/portrait/DB1A6329-B156-465D-AE1E-34B82695212A.webp</image:loc><image:caption>Portrait d&#x27;un homme en pull bleu marine, regard caméra, fond de verdure</image:caption></image:image>
-        <image:image><image:loc>https://mathisrouvreau-droid.github.io/Site_Photo/images/web/portrait/DSCF0317.webp</image:loc><image:caption>Portrait d&#x27;un jeune homme en polo blanc tenant une boule de pétanque</image:caption></image:image>
-        <image:image><image:loc>https://mathisrouvreau-droid.github.io/Site_Photo/images/web/portrait/DSCF0318.webp</image:loc><image:caption>Portrait d&#x27;un jeune homme en polo blanc, geste de la main</image:caption></image:image>
-        <image:image><image:loc>https://mathisrouvreau-droid.github.io/Site_Photo/images/web/portrait/DSCF0851.webp</image:loc><image:caption>Portrait d&#x27;une jeune femme assise dans l&#x27;herbe, gilet en maille vert</image:caption></image:image>
+    <url><loc>https://mrvisuals.fr/portrait.html</loc><lastmod>2026-11-10</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
+        <image:image><image:loc>https://mrvisuals.fr/images/web/portrait/DSC_8825.webp</image:loc><image:caption>Autoportrait de Mathis, photographe, appareil en main devant un cerisier en fleurs</image:caption></image:image>
+        <image:image><image:loc>https://mrvisuals.fr/images/web/portrait/DSC_8826.webp</image:loc><image:caption>Mathis souriant, appareil photo à la main, devant un cerisier en fleurs</image:caption></image:image>
+        <image:image><image:loc>https://mrvisuals.fr/images/web/portrait/DB1A6329-B156-465D-AE1E-34B82695212A.webp</image:loc><image:caption>Portrait d&#x27;un homme en pull bleu marine, regard caméra, fond de verdure</image:caption></image:image>
+        <image:image><image:loc>https://mrvisuals.fr/images/web/portrait/DSCF0317.webp</image:loc><image:caption>Portrait d&#x27;un jeune homme en polo blanc tenant une boule de pétanque</image:caption></image:image>
+        <image:image><image:loc>https://mrvisuals.fr/images/web/portrait/DSCF0318.webp</image:loc><image:caption>Portrait d&#x27;un jeune homme en polo blanc, geste de la main</image:caption></image:image>
+        <image:image><image:loc>https://mrvisuals.fr/images/web/portrait/DSCF0851.webp</image:loc><image:caption>Portrait d&#x27;une jeune femme assise dans l&#x27;herbe, gilet en maille vert</image:caption></image:image>
     </url>
-    <url><loc>https://mathisrouvreau-droid.github.io/Site_Photo/danse.html</loc><lastmod>2026-11-10</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
-        <image:image><image:loc>https://mathisrouvreau-droid.github.io/Site_Photo/images/web/danse/DSCF9553.webp</image:loc><image:caption>Trois danseurs sur scène dans la fumée, lumières violettes</image:caption></image:image>
-        <image:image><image:loc>https://mathisrouvreau-droid.github.io/Site_Photo/images/web/danse/DSCF9558.webp</image:loc><image:caption>Danseuse en silhouette dans la fumée, bras levés, noir et blanc</image:caption></image:image>
-        <image:image><image:loc>https://mathisrouvreau-droid.github.io/Site_Photo/images/web/danse/DSCF9558-2.webp</image:loc><image:caption>Danseuse en silhouette dans la fumée, bras levés, éclairage rouge</image:caption></image:image>
+    <url><loc>https://mrvisuals.fr/danse.html</loc><lastmod>2026-11-10</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
+        <image:image><image:loc>https://mrvisuals.fr/images/web/danse/DSCF9553.webp</image:loc><image:caption>Trois danseurs sur scène dans la fumée, lumières violettes</image:caption></image:image>
+        <image:image><image:loc>https://mrvisuals.fr/images/web/danse/DSCF9558.webp</image:loc><image:caption>Danseuse en silhouette dans la fumée, bras levés, noir et blanc</image:caption></image:image>
+        <image:image><image:loc>https://mrvisuals.fr/images/web/danse/DSCF9558-2.webp</image:loc><image:caption>Danseuse en silhouette dans la fumée, bras levés, éclairage rouge</image:caption></image:image>
     </url>
-    <url><loc>https://mathisrouvreau-droid.github.io/Site_Photo/automobile.html</loc><lastmod>2026-11-10</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
-        <image:image><image:loc>https://mathisrouvreau-droid.github.io/Site_Photo/images/web/voiture/DSCF0893.webp</image:loc><image:caption>Avant d&#x27;une berline grise : phare et calandre</image:caption></image:image>
-        <image:image><image:loc>https://mathisrouvreau-droid.github.io/Site_Photo/images/web/voiture/DSCF0909.webp</image:loc><image:caption>Volant et écran de bord d&#x27;une voiture moderne</image:caption></image:image>
+    <url><loc>https://mrvisuals.fr/automobile.html</loc><lastmod>2026-11-10</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
+        <image:image><image:loc>https://mrvisuals.fr/images/web/voiture/DSCF0893.webp</image:loc><image:caption>Avant d&#x27;une berline grise : phare et calandre</image:caption></image:image>
+        <image:image><image:loc>https://mrvisuals.fr/images/web/voiture/DSCF0909.webp</image:loc><image:caption>Volant et écran de bord d&#x27;une voiture moderne</image:caption></image:image>
     </url>
-    <url><loc>https://mathisrouvreau-droid.github.io/Site_Photo/nature.html</loc><lastmod>2026-11-10</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
-        <image:image><image:loc>https://mathisrouvreau-droid.github.io/Site_Photo/images/web/nature/DSCF0170.webp</image:loc><image:caption>Branches de cerisier en fleurs blanches</image:caption></image:image>
-        <image:image><image:loc>https://mathisrouvreau-droid.github.io/Site_Photo/images/web/nature/DSCF0178.webp</image:loc><image:caption>Branches de cerisier en fleurs roses</image:caption></image:image>
-        <image:image><image:loc>https://mathisrouvreau-droid.github.io/Site_Photo/images/web/nature/DSCF0432.webp</image:loc><image:caption>Orchidées blanches et violettes en gros plan</image:caption></image:image>
-        <image:image><image:loc>https://mathisrouvreau-droid.github.io/Site_Photo/images/web/nature/DSCF0433.webp</image:loc><image:caption>Rose rose en gros plan</image:caption></image:image>
-        <image:image><image:loc>https://mathisrouvreau-droid.github.io/Site_Photo/images/web/nature/DSCF0819.webp</image:loc><image:caption>Trois pâquerettes dans l&#x27;herbe</image:caption></image:image>
-        <image:image><image:loc>https://mathisrouvreau-droid.github.io/Site_Photo/images/web/nature/DSCF0824.webp</image:loc><image:caption>Petite cascade sur une rivière entourée de verdure</image:caption></image:image>
-        <image:image><image:loc>https://mathisrouvreau-droid.github.io/Site_Photo/images/web/nature/DSCF0835.webp</image:loc><image:caption>Rivière bordée de saules pleureurs</image:caption></image:image>
-        <image:image><image:loc>https://mathisrouvreau-droid.github.io/Site_Photo/images/web/nature/DSCF0840.webp</image:loc><image:caption>Prairie fleurie, fleurs bleues et jaunes dans l&#x27;herbe haute</image:caption></image:image>
+    <url><loc>https://mrvisuals.fr/nature.html</loc><lastmod>2026-11-10</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
+        <image:image><image:loc>https://mrvisuals.fr/images/web/nature/DSCF0170.webp</image:loc><image:caption>Branches de cerisier en fleurs blanches</image:caption></image:image>
+        <image:image><image:loc>https://mrvisuals.fr/images/web/nature/DSCF0178.webp</image:loc><image:caption>Branches de cerisier en fleurs roses</image:caption></image:image>
+        <image:image><image:loc>https://mrvisuals.fr/images/web/nature/DSCF0432.webp</image:loc><image:caption>Orchidées blanches et violettes en gros plan</image:caption></image:image>
+        <image:image><image:loc>https://mrvisuals.fr/images/web/nature/DSCF0433.webp</image:loc><image:caption>Rose rose en gros plan</image:caption></image:image>
+        <image:image><image:loc>https://mrvisuals.fr/images/web/nature/DSCF0819.webp</image:loc><image:caption>Trois pâquerettes dans l&#x27;herbe</image:caption></image:image>
+        <image:image><image:loc>https://mrvisuals.fr/images/web/nature/DSCF0824.webp</image:loc><image:caption>Petite cascade sur une rivière entourée de verdure</image:caption></image:image>
+        <image:image><image:loc>https://mrvisuals.fr/images/web/nature/DSCF0835.webp</image:loc><image:caption>Rivière bordée de saules pleureurs</image:caption></image:image>
+        <image:image><image:loc>https://mrvisuals.fr/images/web/nature/DSCF0840.webp</image:loc><image:caption>Prairie fleurie, fleurs bleues et jaunes dans l&#x27;herbe haute</image:caption></image:image>
     </url>
-    <url><loc>https://mathisrouvreau-droid.github.io/Site_Photo/about.html</loc><lastmod>2026-11-10</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
-    <url><loc>https://mathisrouvreau-droid.github.io/Site_Photo/contact.html</loc><lastmod>2026-11-10</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
-    <url><loc>https://mathisrouvreau-droid.github.io/Site_Photo/confidentialite.html</loc><lastmod>2026-11-10</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+    <url><loc>https://mrvisuals.fr/about.html</loc><lastmod>2026-11-10</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
+    <url><loc>https://mrvisuals.fr/contact.html</loc><lastmod>2026-11-10</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
+    <url><loc>https://mrvisuals.fr/confidentialite.html</loc><lastmod>2026-11-10</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
 </urlset>

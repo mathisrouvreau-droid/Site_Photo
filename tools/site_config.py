@@ -7,7 +7,7 @@ plan du site et données structurées. Au passage sur le nom de domaine :
     2. python tools/set_domain.py <ancienne adresse> <nouvelle adresse>   (pages écrites à la main)
     3. python tools/build_collections.py ; python tools/build_gallery.py
 """
-BASE_URL = "https://mathisrouvreau-droid.github.io/Site_Photo"
+BASE_URL = "https://mrvisuals.fr"
 SITE_NAME = "MR VISUALS"
 LOCALITY = "Mortagne-sur-Sèvre"
 REGION = "Vendée"

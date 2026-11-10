@@ -5,8 +5,9 @@ compatibility_date = "2025-09-01"
 
 # Sites autorisés à envoyer des visites / lire les stats (séparés par des virgules).
 # Si tu ajoutes un nom de domaine à ton site, ajoute-le ici puis relance : npm run deploy
+# (l'ancienne adresse github.io est gardée : elle redirige vers mrvisuals.fr, mais des onglets déjà ouverts peuvent encore l'utiliser)
 [vars]
-ALLOWED_ORIGINS = "https://mathisrouvreau-droid.github.io"
+ALLOWED_ORIGINS = "https://mrvisuals.fr,https://www.mrvisuals.fr,https://mathisrouvreau-droid.github.io"
 
 [[d1_databases]]
 binding = "DB"

@@ -2620,6 +2620,8 @@ button {
 .footer__copy {
     font-size: 0.75rem;
     color: var(--gray);
+    -webkit-user-select: none;
+    user-select: none;   /* le triple-clic mène à l'admin (js/main.js) : on évite de surligner le texte */
 }
 
 .footer__socials {

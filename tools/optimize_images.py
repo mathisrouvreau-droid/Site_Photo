@@ -100,6 +100,14 @@ def process(src, cat):
                 lw=big.width, lh=big.height, series=series_of(cat, stem), fresh=False)
 
 
+def read_json(path, default):
+    try:
+        with open(path, encoding="utf-8") as f:
+            return json.load(f)
+    except (OSError, ValueError):
+        return default
+
+
 def main():
     items = []
     for cat in CATEGORIES:
@@ -114,11 +122,31 @@ def main():
         if os.path.exists(p):
             items.append((p, cat))
 
+    # Ce que l'admin a écrit dans le manifeste : à conserver
+    #  - photos ajoutées depuis l'admin (src = "admin") : elles n'ont pas d'original ici ;
+    #  - description (alt) et date d'ajout modifiées dans l'admin ;
+    #  - photos retirées depuis l'admin (images/web/removed.json) : on ne les régénère pas.
+    old = {(m["cat"], m["stem"]): m for m in read_json(os.path.join(WEB, "manifest.json"), [])}
+    removed = set(read_json(os.path.join(WEB, "removed.json"), []))
+
     manifest = []
     for src, cat in items:
+        stem = os.path.splitext(os.path.basename(src))[0]
+        if f"{cat}/{stem}" in removed:
+            print("-  " + cat + "/" + stem + "  (retirée depuis l'admin)")
+            continue
         r = process(src, cat)
+        for key in ("alt", "added"):
+            if old.get((cat, stem), {}).get(key):
+                r[key] = old[(cat, stem)][key]
         manifest.append(r)
         print(("=  " if r.pop("fresh") else "+  ") + cat + "/" + r["stem"], f'{r["w"]}x{r["h"]}')
+
+    seen = {(m["cat"], m["stem"]) for m in manifest}
+    for key, m in old.items():
+        if m.get("src") == "admin" and key not in seen and os.path.exists(os.path.join(WEB, m["cat"], m["stem"] + ".webp")):
+            manifest.append(m)
+            print("=  " + m["cat"] + "/" + m["stem"] + "  (ajoutée depuis l'admin)")
 
     with open(os.path.join(WEB, "manifest.json"), "w", encoding="utf-8") as f:
         json.dump(manifest, f, ensure_ascii=False, indent=1)

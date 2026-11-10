@@ -3,7 +3,23 @@
 Petits scripts pour préparer les images et fabriquer les vidéos du site.
 À lancer **depuis la racine du site**. Il faut Python avec `pillow`, `numpy` et `opencv-python`, `ffmpeg`, et Node.js + Google Chrome (pour dessiner les textes des vidéos dans la typo du site).
 
-## Ajouter de nouvelles photos à la galerie
+## Ajouter ou retirer des photos depuis l'admin (sans ordinateur)
+
+Page privée `admin.html`, onglet **Photos** (raccourci caché : triple-clic sur « © 2026 MR VISUALS » en bas de n'importe quelle page).
+
+- **Ajouter** : choisir les photos, indiquer la collection et décrire ce qu'on voit (c'est le texte lu par Google Images). Elles sont réduites dans le navigateur (WebP, comme `optimize_images.py`) et passent en tête de leur collection.
+- **Retirer** : cocher les photos puis « Retirer du site ». Une photo utilisée sur une page écrite à la main (accueil, À propos, Contact) est refusée : demander son remplacement par le code.
+- **Décrire** : « Modifier la description » sous chaque photo.
+
+Comment ça marche : l'admin enregistre les fichiers et la liste `images/web/manifest.json` dans GitHub (avec une clé personnelle à créer une seule fois, gardée uniquement dans le navigateur). Le robot `.github/workflows/reconstruire-galerie.yml` relance `build_gallery.py` et `build_collections.py`, met à jour les compteurs de l'accueil et de À propos, puis GitHub Pages publie : 1 à 3 minutes. Le robot enregistre aussi la date de dernière mise à jour dans `images/web/build-info.json`.
+
+À savoir en travaillant sur l'ordinateur :
+- **toujours faire `git pull` avant de modifier quoi que ce soit** : le robot et l'admin ajoutent des « sauvegardes » dans GitHub ;
+- les photos ajoutées depuis l'admin n'ont pas d'original dans `images/<collection>/` : `optimize_images.py` les conserve (champ `"src": "admin"` du manifeste) ;
+- une photo retirée depuis l'admin et qui avait un original est notée dans `images/web/removed.json` (le script ne la recrée pas). Pour la remettre : supprimer sa ligne dans ce fichier ;
+- les descriptions se modifient dans l'admin (champ `alt` du manifeste, prioritaire sur `ALT` de `photo_meta.py`).
+
+## Ajouter de nouvelles photos à la galerie (depuis l'ordinateur, pour les grosses modifications)
 
 1. Déposer les originaux dans `images/<collection>/` (`golf`, `portrait`, `danse`, `voiture`, `nature`).
 2. Générer les versions web légères (WebP) :
@@ -17,7 +33,7 @@ Petits scripts pour préparer les images et fabriquer les vidéos du site.
 
 Pour choisir l'ordre d'une série, modifier `GOLDEN_ORDER` en haut de `tools/build_gallery.py`.
 
-**Texte alternatif** : pour une nouvelle photo, ajouter une ligne dans `ALT` de `tools/photo_meta.py` (un texte court qui décrit ce qu'on voit : utile à Google Images et aux lecteurs d'écran).
+**Texte alternatif** : pour une nouvelle photo, ajouter une ligne dans `ALT` de `tools/photo_meta.py` (un texte court qui décrit ce qu'on voit : utile à Google Images et aux lecteurs d'écran). Une description saisie dans l'admin est prioritaire.
 
 ## Pages de collection et plan du site
 

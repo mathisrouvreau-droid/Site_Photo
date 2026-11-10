@@ -43,11 +43,18 @@ GOLDEN_ORDER = [
 
 
 def sort_cat(cat, items):
+    """Les photos ajoutées depuis l'admin (champ « added ») passent en tête, la plus récente d'abord ;
+    les autres suivent dans l'ordre choisi à la main ci-dessous."""
+    fresh = sorted([p for p in items if p.get("added")], key=lambda p: (p["added"], p["stem"]), reverse=True)
+    return fresh + _sort_curated(cat, [p for p in items if not p.get("added")])
+
+
+def _sort_curated(cat, items):
     if cat == "golf":
         rank = {n: i for i, n in enumerate(GOLDEN_ORDER)}
-        golden = sorted([p for p in items if p["series"] == "golden-hour"],
+        golden = sorted([p for p in items if p.get("series", "") == "golden-hour"],
                         key=lambda p: (rank.get(p["stem"], 999), p["stem"]))
-        rest = sorted([p for p in items if p["series"] != "golden-hour"], key=lambda p: p["stem"])
+        rest = sorted([p for p in items if p.get("series", "") != "golden-hour"], key=lambda p: p["stem"])
         return golden + rest
     if cat == "portrait":
         # les autoportraits (hero) en tête
@@ -68,8 +75,9 @@ def interleave(by_cat):
 
 
 def alt_of(cat, label, p):
-    """Description réelle de la photo (tools/photo_meta.py), sinon un texte de secours."""
-    return photo_meta.ALT.get(p["stem"]) or f"Photographie — {label}"
+    """Description réelle de la photo : celle saisie dans l'admin (champ « alt » du manifeste),
+    sinon celle de tools/photo_meta.py, sinon un texte de secours."""
+    return p.get("alt") or photo_meta.ALT.get(p["stem"]) or f"Photographie — {label}"
 
 
 def item_html(cat, label, p, priority=False):
@@ -79,7 +87,7 @@ def item_html(cat, label, p, priority=False):
     load = 'fetchpriority="high" decoding="async"' if priority else 'loading="lazy" decoding="async"'
     return (
         f'                <a class="gallery__item" href="{large}" data-category="{cat}"'
-        f'{" data-series=" + chr(34) + p["series"] + chr(34) if p["series"] else ""}'
+        f'{" data-series=" + chr(34) + p.get("series", "") + chr(34) if p.get("series", "") else ""}'
         f' data-full="{large}" aria-label="Agrandir — {html.escape(label)}">\n'
         f'                    <img src="{small}" srcset="{small} {p["w"]}w, {large} {p["lw"]}w" '
         f'sizes="(max-width: 520px) 100vw, (max-width: 1024px) 50vw, 33vw" '
@@ -95,6 +103,36 @@ def replace_block(text, name, content):
     if not pat.search(text):
         raise SystemExit(f"Balises {name}:START/END introuvables dans gallery.html")
     return pat.sub(lambda m: m.group(1) + content + "\n", text)
+
+
+COUNT_FILES = ["index.html", "about.html"]
+
+
+def photos_label(n):
+    if n <= 0:
+        return "bientôt"
+    return f"{n} photo{'s' if n > 1 else ''}"
+
+
+def sync_counts(by_cat, total):
+    """Met à jour les nombres de photos écrits dans l'accueil et la page À propos
+    (balises repérées par data-cat-count="<catégorie>" et data-total-photos)."""
+    for name in COUNT_FILES:
+        path = os.path.join(ROOT, name)
+        with open(path, encoding="utf-8") as f:
+            text = f.read()
+        before = text
+        for cat, _label in CATS:
+            label = photos_label(len(by_cat.get(cat, [])))
+            text = re.sub(rf'(<span class="(?:card__count|about__list-note)" data-cat-count="{cat}">)[^<]*(</span>)',
+                          lambda m: m.group(1) + label + m.group(2), text)
+        rounded = (total // 10) * 10          # « 50+ » tant qu'il y a entre 50 et 59 photos
+        text = re.sub(r'(<span class="intro__stat-num" data-count=")\d+(" data-suffix="\+" data-total-photos>)[^<]*(</span>)',
+                      lambda m: f"{m.group(1)}{rounded}{m.group(2)}{rounded}+{m.group(3)}", text)
+        if text != before:
+            with open(path, "w", encoding="utf-8", newline="\n") as f:
+                f.write(text)
+            print(f"{name} : compteurs mis à jour")
 
 
 def main():
@@ -130,6 +168,7 @@ def main():
     text = replace_block(text, "FILTERS", buttons.rstrip("\n"))
     with open(path, "w", encoding="utf-8", newline="\n") as f:
         f.write(text)
+    sync_counts(by_cat, total)
     print(f"gallery.html : {total} photos, " + ", ".join(f"{labels[c]} {len(v)}" for c, v in by_cat.items()))
 
 

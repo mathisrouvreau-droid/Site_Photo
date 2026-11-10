@@ -21,7 +21,8 @@ import re
 import build_gallery as bg
 import photo_meta as pm
 import site_config as sc
-from make_og_collections import PICKS
+
+PICKS = pm.PICKS
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 B = sc.BASE_URL
@@ -49,6 +50,16 @@ def load_manifest():
         return json.load(f)
 
 
+def pick_for(col, manifest, by):
+    """Photo mise en avant de la collection ; si elle a été retirée, la première photo de la collection."""
+    for stem in PICKS.get(col["cat"], []):
+        m = by.get((col["cat"], stem)) or by.get(("portrait", stem))
+        if m:
+            return m
+    mine = bg.sort_cat(col["cat"], [x for x in manifest if x["cat"] == col["cat"]])
+    return mine[0] if mine else None
+
+
 def other_cards(current, manifest):
     by = {(m["cat"], m["stem"]): m for m in manifest}
     out = []
@@ -56,13 +67,15 @@ def other_cards(current, manifest):
     for col in pm.COLLECTIONS:
         if col["slug"] == current["slug"]:
             continue
+        m = pick_for(col, manifest, by)
+        if m is None:                      # collection vide : pas de carte
+            continue
         n += 1
-        stem = PICKS[col["cat"]][0]
-        m = by.get((col["cat"], stem)) or by[("portrait", stem)]
+        stem = m["stem"]
         src = f"images/web/{m['cat']}/{stem}_s.webp"
         count = sum(1 for x in manifest if x["cat"] == col["cat"])
         out.append(f'''                <a href="{col["slug"]}.html" class="card" data-cursor="Explorer">
-                    <div class="card__img"><img src="{src}" width="{m["w"]}" height="{m["h"]}" alt="{esc(pm.ALT.get(stem, col["name"]))}" loading="lazy" decoding="async"></div>
+                    <div class="card__img"><img src="{src}" width="{m["w"]}" height="{m["h"]}" alt="{esc(bg.alt_of(col["cat"], col["name"], m))}" loading="lazy" decoding="async"></div>
                     <span class="card__count">{count} photos</span>
                     <div class="card__body"><span class="card__num">0{n}</span><h3>{esc(col["name"])}</h3><p>{esc(TAGLINES[col["slug"]])}</p></div>
                 </a>
@@ -175,17 +188,17 @@ def build_page(col, template_head, template_foot, lightbox, manifest):
 
 
 def build_sitemap(manifest):
-    def entry(path, freq, prio, images=()):
-        out = f"    <url><loc>{B}/{path}</loc><lastmod>{sc.LASTMOD}</lastmod><changefreq>{freq}</changefreq><priority>{prio}</priority>"
+    def entry(path, freq, prio, images=(), lastmod=None):
+        out = f"    <url><loc>{B}/{path}</loc><lastmod>{lastmod or sc.LASTMOD}</lastmod><changefreq>{freq}</changefreq><priority>{prio}</priority>"
         for p in images:
             out += (f"\n        <image:image><image:loc>{B}/images/web/{p['cat']}/{p['stem']}.webp</image:loc>"
                     f"<image:caption>{esc(bg.alt_of(p['cat'], p['cat'], p))}</image:caption></image:image>")
         return out + ("\n    " if images else "") + "</url>"
 
-    rows = [entry("", "monthly", "1.0"), entry("gallery.html", "weekly", "0.9")]
+    rows = [entry("", "monthly", "1.0"), entry("gallery.html", "weekly", "0.9", lastmod=sc.LASTMOD_GALLERY)]
     for col in pm.COLLECTIONS:
         photos = bg.sort_cat(col["cat"], [m for m in manifest if m["cat"] == col["cat"]])
-        rows.append(entry(col["slug"] + ".html", "monthly", "0.8", photos[:8]))
+        rows.append(entry(col["slug"] + ".html", "monthly", "0.8", photos[:8], lastmod=sc.LASTMOD_GALLERY))
     rows += [entry("about.html", "yearly", "0.6"), entry("contact.html", "yearly", "0.7"), entry("confidentialite.html", "yearly", "0.3")]
     xml = ('<?xml version="1.0" encoding="UTF-8"?>\n'
            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n'

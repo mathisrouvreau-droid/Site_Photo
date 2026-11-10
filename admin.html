@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Statistiques — MR VISUALS</title>
+    <title>Administration — MR VISUALS</title>
     <meta name="robots" content="noindex, nofollow, noarchive">
     <meta name="theme-color" content="#080808">
     <link rel="icon" type="image/png" href="images/brand/favicon.png">
@@ -21,8 +21,8 @@
         <form class="login__card" id="loginForm" autocomplete="off">
             <img class="login__mark" src="images/brand/mark-white.png" alt="MR VISUALS" width="84" height="51">
             <span class="login__label">Espace privé</span>
-            <h1 class="login__title">Statistiques</h1>
-            <p class="login__hint" id="loginHint">Entre ton mot de passe pour voir les visites du site.</p>
+            <h1 class="login__title">Administration</h1>
+            <p class="login__hint" id="loginHint">Entre ton mot de passe pour voir les visites et gérer les photos du site.</p>
             <label class="sr-only" for="pwd">Mot de passe</label>
             <input class="login__input" id="pwd" type="password" placeholder="Mot de passe" autocomplete="current-password" required>
             <label class="login__remember"><input type="checkbox" id="remember"> <span>Rester connecté sur cet appareil</span></label>
@@ -37,8 +37,12 @@
         <header class="dash__top">
             <a class="dash__brand" href="index.html" title="Retour au site">
                 <img src="images/brand/mark-white.png" alt="MR VISUALS" width="46" height="28">
-                <span>Statistiques</span>
+                <span>Administration</span>
             </a>
+            <div class="dash__tabs" id="tabs" role="tablist" aria-label="Sections">
+                <button type="button" role="tab" id="tabStats" data-view="stats" aria-selected="true" class="is-active">Statistiques</button>
+                <button type="button" role="tab" id="tabPhotos" data-view="photos" aria-selected="false">Photos</button>
+            </div>
             <div class="dash__range" id="range" role="group" aria-label="Période">
                 <button type="button" data-range="1">Aujourd'hui</button>
                 <button type="button" data-range="7">7 jours</button>
@@ -57,7 +61,7 @@
             </div>
         </header>
 
-        <main class="dash__main">
+        <main class="dash__main" id="statsView">
             <div class="dash__banner" id="banner" role="alert" hidden></div>
 
             <div class="dash__head">
@@ -97,6 +101,74 @@
             </div>
         </main>
 
+        <!-- Photos : ajouter / retirer / décrire -->
+        <main class="dash__main" id="photosView" hidden>
+            <div class="dash__head">
+                <div>
+                    <span class="section-label">Galerie</span>
+                    <h1 class="dash__title">Photos</h1>
+                    <p class="dash__sub" id="phSub">Ajoute ou retire des photos : le site se met à jour tout seul.</p>
+                </div>
+                <div class="ph-actions" id="phActions" hidden>
+                    <label class="btn btn--solid ph-add" id="phAddBtn">
+                        <span>Ajouter des photos</span>
+                        <input type="file" id="phFile" accept="image/jpeg,image/png,image/webp" multiple hidden>
+                    </label>
+                </div>
+            </div>
+
+            <div class="dash__banner" id="phBanner" role="alert" hidden></div>
+            <div class="dash__banner dash__banner--ok" id="phOk" role="status" hidden></div>
+
+            <!-- Connexion à GitHub (une seule fois, sur chaque appareil) -->
+            <section class="panel ph-connect" id="phConnect" hidden>
+                <div class="panel__head"><h2>Connecter GitHub</h2><span class="panel__note">une seule fois</span></div>
+                <p class="ph-text">Pour publier des photos depuis cette page, il faut une clé d'accès personnelle à ton dépôt. Elle reste uniquement dans ce navigateur et ne donne accès qu'au site.</p>
+                <ol class="ph-steps">
+                    <li>Ouvre <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">la page de création d'une clé GitHub</a>.</li>
+                    <li><b>Token name</b> : <code>MR VISUALS admin</code> · <b>Expiration</b> : 1 an.</li>
+                    <li><b>Repository access</b> : « Only select repositories », puis choisis <code>Site_Photo</code>.</li>
+                    <li><b>Permissions</b> → « Repository permissions » → <b>Contents</b> : <b>Read and write</b>. Rien d'autre.</li>
+                    <li>Clique sur <b>Generate token</b>, copie la clé (elle commence par <code>github_pat_</code>) et colle-la ci-dessous.</li>
+                </ol>
+                <form class="ph-connect__form" id="phConnectForm" autocomplete="off">
+                    <label class="sr-only" for="phToken">Clé GitHub</label>
+                    <input class="ph-input" id="phToken" type="password" placeholder="github_pat_…" autocomplete="off" spellcheck="false" required>
+                    <button class="btn btn--solid" type="submit"><span>Connecter</span></button>
+                </form>
+            </section>
+
+            <!-- Photos choisies, pas encore publiées -->
+            <section class="panel ph-draft" id="phDraft" hidden>
+                <div class="panel__head"><h2>À ajouter</h2><span class="panel__note" id="phDraftCount"></span></div>
+                <p class="ph-text">Pour chaque photo, choisis sa collection et décris ce qu'on y voit en une phrase (utile à Google Images). Elles apparaîtront en tête de leur collection.</p>
+                <ul class="ph-drafts" id="phDrafts"></ul>
+                <div class="ph-bar">
+                    <button class="btn btn--ghost" type="button" id="phDraftCancel"><span>Annuler</span></button>
+                    <button class="btn btn--solid" type="button" id="phPublish"><span>Publier sur le site</span></button>
+                </div>
+                <div class="ph-progress" id="phProgress" hidden><i></i><span id="phProgressText"></span></div>
+            </section>
+
+            <!-- Photos du site -->
+            <section class="panel ph-library" id="phLibrary" hidden>
+                <div class="panel__head"><h2>Sur le site</h2><span class="panel__note" id="phLibNote"></span></div>
+                <div class="ph-filters" id="phFilters" role="group" aria-label="Collection"></div>
+                <div class="ph-bar ph-bar--select" id="phSelectBar" hidden>
+                    <span id="phSelectCount"></span>
+                    <button class="btn btn--ghost" type="button" id="phSelectClear"><span>Désélectionner</span></button>
+                    <button class="btn btn--danger" type="button" id="phDelete"><span>Retirer du site</span></button>
+                </div>
+                <ul class="ph-grid" id="phGrid"></ul>
+                <p class="ph-empty" id="phEmpty" hidden>Aucune photo dans cette collection.</p>
+            </section>
+
+            <p class="ph-foot" id="phFoot" hidden>
+                <span id="phBuilt"></span>
+                <button class="ph-link" type="button" id="phLogoutGh">Déconnecter GitHub de cet appareil</button>
+            </p>
+        </main>
+
         <footer class="dash__foot">
             <label class="switch"><input type="checkbox" id="noTrack"><span class="switch__ui"></span><span>Ne pas compter mes visites sur cet appareil</span></label>
             <p>Mesure d'audience anonyme : aucun cookie, aucune adresse IP conservée.
@@ -106,5 +178,6 @@
 
     <script src="js/config.js"></script>
     <script src="js/admin.js"></script>
+    <script src="js/admin-photos.js"></script>
 </body>
 </html>

@@ -14,4 +14,10 @@ REGION = "Vendée"
 INSTAGRAM = "https://www.instagram.com/mpict_rv12/"
 LINKEDIN = "https://www.linkedin.com/in/mathis-rouvreau-aa6096305/"
 EMAIL = "mathis.rouvreau@gmail.com"
-LASTMOD = "2026-11-10"
+LASTMOD = "2026-11-10"   # date de dernière modification des pages écrites à la main (plan du site)
+
+# Date de la galerie et des pages de collection : celle du jour où elles sont reconstruites
+# (automatiquement sur GitHub à chaque ajout ou retrait de photo depuis l'admin).
+import datetime as _dt
+import os as _os
+LASTMOD_GALLERY = _os.environ.get("SITE_LASTMOD") or _dt.date.today().isoformat()

@@ -143,3 +143,13 @@ COLLECTIONS = [
 ]
 
 SLUG_BY_CAT = {c["cat"]: c["slug"] for c in COLLECTIONS}
+
+# Photos mises en avant par collection (images de partage et cartes « Autres collections »).
+# Si l'une d'elles est retirée de la galerie, le site prend automatiquement la première photo de la collection.
+PICKS = {
+    "golf": ["DSCF3270", "DSCF3314", "DSCF3226"],
+    "portrait": ["DB1A6329-B156-465D-AE1E-34B82695212A", "DSC_8826", "DSCF0851"],
+    "danse": ["DSCF9558", "DSCF9558-2", "DSCF9553"],
+    "voiture": ["DSCF0893", "DSCF0909", "DSCF0893"],
+    "nature": ["DSCF0433", "DSCF0178", "DSCF0824"],
+}

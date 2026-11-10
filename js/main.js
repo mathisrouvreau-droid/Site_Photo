@@ -399,4 +399,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- Accès discret à l'administration ---
+    // Triple-clic (ou triple tape sur téléphone) sur « © 2026 MR VISUALS » en bas de n'importe quelle page.
+    // Ce n'est qu'un raccourci : la page admin reste protégée par son mot de passe.
+    const copyright = document.querySelector('.footer__copy');
+    if (copyright) {
+        let taps = 0;
+        let lastTap = 0;
+        copyright.addEventListener('click', (e) => {
+            if (e.target.closest('a')) return;            // le lien « Confidentialité » garde son rôle
+            const now = Date.now();
+            taps = now - lastTap < 700 ? taps + 1 : 1;
+            lastTap = now;
+            if (taps >= 3) {
+                taps = 0;
+                window.location.href = 'admin.html';
+            }
+        });
+    }
+
 });

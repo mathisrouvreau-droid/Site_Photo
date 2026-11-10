@@ -1,0 +1,76 @@
+# MR VISUALS — reconstruit la galerie, les pages de collection et le plan du site
+# chaque fois que la liste des photos (images/web/manifest.json) change.
+#
+# C'est ce que déclenche la page d'administration quand tu ajoutes ou retires une photo :
+# elle modifie le manifeste, ce robot régénère les pages (mêmes scripts que sur ton ordinateur),
+# puis GitHub Pages publie le résultat. Compte 1 à 3 minutes.
+#
+# Pour le lancer à la main : onglet « Actions » du dépôt → « Reconstruire la galerie » → « Run workflow ».
+name: Reconstruire la galerie
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'images/web/manifest.json'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: reconstruire-galerie
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le site
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Installer Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Reconstruire la galerie, les collections et le plan du site
+        run: |
+          python tools/build_gallery.py
+          python tools/build_collections.py
+
+      - name: Noter la date de dernière mise à jour (affichée dans l'admin)
+        run: |
+          python - <<'PY'
+          import datetime, json
+          manifest = json.load(open('images/web/manifest.json', encoding='utf-8'))
+          cats = ('golf', 'portrait', 'danse', 'voiture', 'nature')
+          info = {
+              'built': datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'),
+              'photos': sum(1 for p in manifest if p['cat'] in cats),
+          }
+          json.dump(info, open('images/web/build-info.json', 'w', encoding='utf-8'))
+          print(info)
+          PY
+
+      - name: Publier les pages reconstruites
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "mrvisuals-bot"
+          git config user.email "mrvisuals-bot@users.noreply.github.com"
+          git add -A gallery.html index.html about.html golf.html portrait.html danse.html automobile.html nature.html sitemap.xml robots.txt images/web/build-info.json
+          if git diff --cached --quiet; then
+            echo "Rien à publier : les pages sont déjà à jour."
+          else
+            # pas de « [skip ci] » ici : cela pourrait aussi empêcher GitHub Pages de publier.
+            # Pas de boucle possible : ce robot ne se relance que si images/web/manifest.json change.
+            git commit -m "Galerie reconstruite automatiquement"
+            git pull --rebase origin main
+            git push origin main
+            # on demande aussi la publication à GitHub Pages (au cas où elle ne partirait pas toute seule)
+            gh api -X POST "repos/${GITHUB_REPOSITORY}/pages/builds" || echo "Publication déjà en cours."
+          fi

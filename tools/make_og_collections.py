@@ -22,14 +22,8 @@ W, H, GAP = 1200, 630, 4
 ROOT = vl.ROOT
 OUT = os.path.join(ROOT, "images", "og")
 
-# photos mises en avant par collection (sinon les premières de la collection)
-PICKS = {
-    "golf": ["DSCF3270", "DSCF3314", "DSCF3226"],
-    "portrait": ["DB1A6329-B156-465D-AE1E-34B82695212A", "DSC_8826", "DSCF0851"],
-    "danse": ["DSCF9558", "DSCF9558-2", "DSCF9553"],
-    "voiture": ["DSCF0893", "DSCF0909", "DSCF0893"],
-    "nature": ["DSCF0433", "DSCF0178", "DSCF0824"],
-}
+# photos mises en avant par collection : voir PICKS dans tools/photo_meta.py
+PICKS = pm.PICKS
 
 
 def main():
@@ -37,7 +31,15 @@ def main():
     manifest = {(m["cat"], m["stem"]): m for m in json.load(open(os.path.join(ROOT, "images", "web", "manifest.json"), encoding="utf-8"))}
     logo = vl.logo_sprite("white", 170)
     for col in pm.COLLECTIONS:
-        names = PICKS[col["cat"]]
+        names = [s for s in PICKS[col["cat"]] if (col["cat"], s) in manifest or ("portrait", s) in manifest]
+        for (c, s) in sorted(manifest):                      # photo retirée : on complète avec les premières de la collection
+            if len(names) >= 3:
+                break
+            if c == col["cat"] and s not in names:
+                names.append(s)
+        base = list(names)
+        while base and len(names) < 3:                       # peu de photos : on répète pour garder le triptyque
+            names.append(base[len(names) % len(base)])
         pw = (W - 2 * GAP) // 3
         canvas = Image.new("RGB", (W, H), (8, 8, 8))
         for i, stem in enumerate(names):

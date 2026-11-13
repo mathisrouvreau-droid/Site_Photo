@@ -2388,8 +2388,28 @@ button {
 .form__note {
     font-size: 0.75rem;
     color: var(--gray);
-    max-width: 260px;
+    max-width: 340px;
     line-height: 1.5;
+}
+
+.form__note a {
+    color: var(--gray-light);
+    border-bottom: 1px solid var(--dark-3);
+    transition: color 0.3s, border-color 0.3s;
+}
+
+.form__note a:hover {
+    color: var(--accent);
+    border-color: var(--accent-dark);
+}
+
+/* piège anti-spam du formulaire : invisible pour les humains */
+.form__trap {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
 }
 
 @media (max-width: 960px) {
@@ -2870,6 +2890,12 @@ button {
     width: 10px;
     height: 1px;
     background: var(--accent);
+}
+
+.legal__body .legal__status {
+    margin: 14px 0 22px;
+    font-size: 0.85rem;
+    color: var(--accent-light);
 }
 
 .legal__body strong {

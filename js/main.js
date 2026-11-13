@@ -418,4 +418,29 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- Page Confidentialité : bouton « Ne pas compter mes visites » ---
+    // Pose (ou retire) le repère que js/analytics.js respecte : aucune mesure n'est alors envoyée depuis cet appareil.
+    const optout = document.getElementById('optout');
+    if (optout) {
+        const status = document.getElementById('optoutStatus');
+        const refused = () => { try { return localStorage.getItem('mrv_no_track') === '1'; } catch (e) { return false; } };
+        const paint = () => {
+            const off = refused();
+            optout.setAttribute('aria-pressed', String(off));
+            optout.querySelector('span').textContent = off ? 'Recommencer à compter mes visites' : 'Ne pas compter mes visites';
+            status.textContent = off ? 'Vos visites ne sont pas comptées sur cet appareil.' : 'Vos visites sont comptées, de façon anonyme.';
+        };
+        optout.addEventListener('click', () => {
+            try {
+                if (refused()) localStorage.removeItem('mrv_no_track');
+                else localStorage.setItem('mrv_no_track', '1');
+            } catch (e) {
+                status.textContent = 'Votre navigateur bloque cette option : utilisez « Ne pas me suivre » ou un bloqueur de traceurs.';
+                return;
+            }
+            paint();
+        });
+        paint();
+    }
+
 });

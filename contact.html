@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script>document.documentElement.classList.add('js')</script>
-    <title>Contact — Réserver une séance photo en Vendée | MR VISUALS</title>
-    <meta name="description" content="Contactez MR VISUALS pour un shooting golf, portrait, danse, automobile ou nature. Réponse rapide garantie.">
+    <title>Contact — Écrire à MR VISUALS, photographe en Vendée</title>
+    <meta name="description" content="Écrivez à MR VISUALS pour une idée de photos de golf, portrait, danse, automobile ou nature. Je réponds sous 48 heures.">
     <meta name="theme-color" content="#080808">
     <link rel="canonical" href="https://mrvisuals.fr/contact.html">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="MR VISUALS">
     <meta property="og:locale" content="fr_FR">
     <meta property="og:title" content="Contact — MR VISUALS">
-    <meta property="og:description" content="Un projet photo ? Parlons-en.">
+    <meta property="og:description" content="Une idée de photos ? Écrivez-moi.">
     <meta property="og:url" content="https://mrvisuals.fr/contact.html">
     <meta property="og:image" content="https://mrvisuals.fr/images/og.jpg">
     <meta property="og:image:width" content="1200">
@@ -20,36 +20,30 @@
     <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" type="image/png" href="images/brand/favicon.png">
     <link rel="apple-touch-icon" href="images/brand/favicon.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="preload" href="fonts/outfit-normal-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/cormorant-garamond-normal-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/style.css">
     <noscript><style>.reveal-on-scroll{opacity:1;transform:none}</style></noscript>
     <script type="application/ld+json">
-{
+    {
         "@context": "https://schema.org",
         "@type": "ContactPage",
         "url": "https://mrvisuals.fr/contact.html",
         "name": "Contact — MR VISUALS",
         "inLanguage": "fr-FR",
         "about": {
-            "@id": "https://mrvisuals.fr/#business"
+            "@id": "https://mrvisuals.fr/#mathis"
         },
         "mainEntity": {
-            "@type": "ProfessionalService",
-            "@id": "https://mrvisuals.fr/#business",
-            "name": "MR VISUALS",
-            "url": "https://mrvisuals.fr/",
+            "@type": "Person",
+            "@id": "https://mrvisuals.fr/#mathis",
+            "name": "Mathis Rouvreau",
+            "url": "https://mrvisuals.fr/about.html",
             "email": "mathis.rouvreau@gmail.com",
-            "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Mortagne-sur-Sèvre",
-                "addressRegion": "Vendée",
-                "addressCountry": "FR"
-            },
             "contactPoint": {
                 "@type": "ContactPoint",
-                "contactType": "réservations et devis",
+                "contactType": "contact",
                 "email": "mathis.rouvreau@gmail.com",
                 "availableLanguage": "fr"
             }
@@ -91,7 +85,7 @@
         <div class="container">
             <div class="contact-hero__status reveal-up">
                 <span class="contact-hero__dot" aria-hidden="true"></span>
-                <span>Disponible pour de nouveaux projets</span>
+                <span>Une idée, une envie&nbsp;? Écrivez-moi</span>
             </div>
             <h1 class="contact-hero__title" data-split="words" data-split-hero>
                 <em>Chaque&nbsp;</em>instant<br>
@@ -121,13 +115,13 @@
                 <button class="service-card reveal-on-scroll" data-subject="portrait" style="--delay: 0.1s">
                     <span class="service-card__num">02</span>
                     <span class="service-card__title">Portrait</span>
-                    <span class="service-card__desc">Séances individuelles, couples, familles, pros.</span>
+                    <span class="service-card__desc">Portraits individuels, en couple, en famille ou entre amis.</span>
                     <span class="service-card__arrow" aria-hidden="true">→</span>
                 </button>
                 <button class="service-card reveal-on-scroll" data-subject="collab" style="--delay: 0.15s">
                     <span class="service-card__num">03</span>
                     <span class="service-card__title">Collaboration</span>
-                    <span class="service-card__desc">Marques, clubs, créateurs &amp; projets éditoriaux.</span>
+                    <span class="service-card__desc">Clubs, créateurs et projets artistiques ou éditoriaux.</span>
                     <span class="service-card__arrow" aria-hidden="true">→</span>
                 </button>
                 <button class="service-card reveal-on-scroll" data-subject="other" style="--delay: 0.2s">
@@ -221,8 +215,13 @@
                             <div class="form__line"></div>
                         </div>
 
+                        <!-- piège anti-spam : les humains ne voient pas ce champ, les robots le remplissent (Formspree écarte alors le message) -->
+                        <div class="form__trap" aria-hidden="true">
+                            <label>Ne pas remplir <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label>
+                        </div>
+
                         <div class="form__footer">
-                            <span class="form__note">En envoyant, vous acceptez d'être recontacté par email.</span>
+                            <span class="form__note">En envoyant, vous acceptez d'être recontacté par email. Vos informations ne servent qu'à vous répondre : <a href="confidentialite.html">confidentialité</a>.</span>
                             <button type="submit" class="form__submit">
                                 <span>Envoyer le message</span>
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -274,7 +273,7 @@
             </div>
             <div class="footer__mega" data-split="chars" aria-hidden="true">MR VISUALS</div>
             <div class="footer__bottom">
-                <p class="footer__copy">&copy; 2026 MR VISUALS. Tous droits réservés. <a href="confidentialite.html">Confidentialité</a></p>
+                <p class="footer__copy">&copy; 2026 MR VISUALS. Tous droits réservés. <a href="mentions-legales.html">Mentions légales</a><a href="confidentialite.html">Confidentialité</a></p>
                 <div class="footer__socials">
                     <a href="https://www.instagram.com/mpict_rv12/" target="_blank" rel="noopener" aria-label="Instagram">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>

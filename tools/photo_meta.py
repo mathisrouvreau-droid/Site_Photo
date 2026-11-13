@@ -86,22 +86,22 @@ COLLECTIONS = [
             "je le décompose, je guette le finish, le regard après un putt, la lumière rasante de fin de journée.",
             "Cette collection réunit deux séries : « Golden Hour », réalisée au coucher du soleil, et mes premiers swings "
             "sur le tee de départ, en couleur et en noir et blanc. Clubs, compétitions, joueurs ou simple envie de beaux "
-            "souvenirs sur le parcours : j'interviens en Vendée et dans tout le Grand Ouest.",
+            "souvenirs sur le parcours : je me déplace volontiers en Vendée et dans tout le Grand Ouest.",
         ],
         "keywords": "photographe golf Vendée, photo de swing, séance photo golf, golden hour",
     },
     {
         "slug": "portrait", "cat": "portrait", "name": "Portrait", "nav": "Portrait",
         "title": "Photographe portrait en Vendée — Séance en extérieur | MR VISUALS",
-        "description": "Portraits en lumière naturelle par MR VISUALS, photographe en Vendée : séances individuelles, couples, familles et portraits professionnels en extérieur.",
+        "description": "Portraits en lumière naturelle par MR VISUALS, photographe en Vendée : portraits individuels, en couple, en famille ou entre amis, en extérieur.",
         "lede": "L'âme du regard, en lumière naturelle.",
         "intro": [
             "Un portrait réussi tient à peu de choses : un regard, une lumière, la confiance qui s'installe pendant la séance. "
             "Je travaille en lumière naturelle, en extérieur, avec des zooms f/2.8 pour un visage net et un fond doux.",
-            "Séances individuelles, couples, familles, portraits professionnels : on prépare ensemble l'ambiance et le lieu, "
+            "Portraits individuels, en couple, en famille ou entre amis : on prépare ensemble l'ambiance et le lieu, "
             "en Vendée ou ailleurs dans le Grand Ouest.",
         ],
-        "keywords": "photographe portrait Vendée, séance portrait extérieur, portrait professionnel",
+        "keywords": "photographe portrait Vendée, séance portrait extérieur, portrait en lumière naturelle",
     },
     {
         "slug": "danse", "cat": "danse", "name": "Danse", "nav": "Danse",
@@ -111,19 +111,18 @@ COLLECTIONS = [
         "intro": [
             "La danse se photographie dans la pénombre, avec des lumières qui changent à chaque seconde. Je cherche la silhouette "
             "dans la fumée, le contre-jour, le geste saisi au bon moment, sans gêner le spectacle.",
-            "Écoles de danse, compagnies, galas : contactez-moi pour couvrir votre représentation ou réaliser des photos de scène.",
+            "Écoles de danse, compagnies, galas : écrivez-moi si vous aimeriez garder de belles photos de votre spectacle.",
         ],
         "keywords": "photographe danse Vendée, photo de spectacle, photographe gala de danse",
     },
     {
         "slug": "automobile", "cat": "voiture", "name": "Automobile", "nav": "Automobile",
         "title": "Photographe automobile en Vendée — Voitures | MR VISUALS",
-        "description": "Photographie automobile par MR VISUALS : détails, lignes et lumière sur les voitures, pour particuliers et professionnels, en Vendée et dans le Grand Ouest.",
+        "description": "Photographie automobile par MR VISUALS : détails, lignes et lumière sur les voitures, pour les passionnés, en Vendée et dans le Grand Ouest.",
         "lede": "Les lignes et la lumière.",
         "intro": [
             "Une voiture, ce sont des lignes, des reflets et des détails : une calandre, un phare, un volant. Je photographie "
-            "les véhicules en extérieur, en lumière naturelle, pour des particuliers, des passionnés ou des professionnels "
-            "(garages, concessions, clubs).",
+            "les véhicules en extérieur, en lumière naturelle, pour des passionnés et des propriétaires fiers de leur voiture.",
             "D'autres séries arrivent : si vous avez un véhicule à mettre en valeur, écrivez-moi.",
         ],
         "keywords": "photographe automobile Vendée, photo de voiture, shooting voiture",

@@ -20,9 +20,9 @@
     <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" type="image/png" href="images/brand/favicon.png">
     <link rel="apple-touch-icon" href="images/brand/favicon.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="preload" href="fonts/outfit-normal-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/cormorant-garamond-normal-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/style.css">
     <noscript><style>.reveal-on-scroll{opacity:1;transform:none}</style></noscript>
 </head>
@@ -69,6 +69,17 @@
                     Il compte simplement, de façon anonyme, combien de personnes le visitent, pour que je sache
                     ce qui intéresse. Voici précisément ce qui se passe.</p>
 
+                <h2>Qui est responsable&nbsp;?</h2>
+                <p>Le responsable des données décrites ici est Mathis Rouvreau, éditeur du site
+                    (voir les <a href="mentions-legales.html">mentions légales</a>).
+                    Contact&nbsp;: <a href="mailto:mathis.rouvreau@gmail.com">mathis.rouvreau@gmail.com</a>.</p>
+
+                <h2>Cookies et traceurs</h2>
+                <p>Ce site ne dépose <strong>aucun cookie</strong> et n'utilise aucun traceur publicitaire ni aucun
+                    réseau social intégré. Il n'a donc pas besoin de votre accord et n'affiche pas de bandeau de cookies.
+                    La seule chose qui peut être gardée dans votre navigateur est un petit repère, créé uniquement si
+                    vous cliquez sur le bouton «&nbsp;Ne pas compter mes visites&nbsp;» ci-dessous.</p>
+
                 <h2>Ce qui est mesuré</h2>
                 <ul>
                     <li>les pages consultées et le temps passé sur chaque page&nbsp;;</li>
@@ -85,25 +96,58 @@
                     <li>votre adresse IP n'est <strong>jamais conservée</strong>&nbsp;: elle sert un instant à deviner le pays
                         et la ville, puis à fabriquer une empreinte anonyme qui <strong>change chaque jour</strong>
                         et ne permet pas de vous reconnaître d'un jour à l'autre&nbsp;;</li>
+                    <li>aucune police d'écriture ni aucun script chargés depuis un autre site : les polices sont hébergées ici&nbsp;;</li>
                     <li>aucune publicité, aucune revente, aucun partage de ces chiffres&nbsp;;</li>
                     <li>aucune donnée n'est rattachée à votre nom ou à votre adresse e-mail.</li>
                 </ul>
 
                 <h2>Refuser la mesure</h2>
+                <p>Vous pouvez refuser à tout moment, sans rien justifier&nbsp;:</p>
+                <div class="btn-row">
+                    <button type="button" class="btn btn--ghost" id="optout" aria-pressed="false"><span>Ne pas compter mes visites</span></button>
+                </div>
+                <p class="legal__status" id="optoutStatus" role="status"></p>
                 <p>Si votre navigateur envoie le signal «&nbsp;Ne pas me suivre&nbsp;» (Do Not Track) ou
-                    «&nbsp;Global Privacy Control&nbsp;», aucune mesure n'est faite. Vous pouvez aussi utiliser un bloqueur
-                    de traceurs : le site fonctionne exactement de la même façon.</p>
+                    «&nbsp;Global Privacy Control&nbsp;», aucune mesure n'est faite non plus. Un bloqueur de traceurs
+                    fonctionne aussi&nbsp;: le site marche exactement de la même façon.</p>
+
+                <h2>Pourquoi ces données</h2>
+                <p>La mesure d'audience répond à mon intérêt légitime de savoir comment le site est consulté, pour
+                    l'améliorer. Elle est conçue pour respecter les conditions fixées par la CNIL afin d'être dispensée
+                    de consentement&nbsp;: données anonymes, jamais recoupées avec d'autres, durée limitée, possibilité
+                    de refuser.</p>
 
                 <h2>Conservation et hébergement</h2>
-                <p>Les mesures sont conservées au maximum 26 mois, puis supprimées automatiquement. Elles sont
-                    stockées chez Cloudflare. Le site lui-même est hébergé par GitHub Pages.</p>
+                <p>Les mesures sont conservées au maximum 25 mois, puis supprimées automatiquement. Elles sont
+                    stockées chez Cloudflare. Le site lui-même est hébergé par GitHub Pages (GitHub, Inc.), qui peut
+                    conserver des journaux techniques de connexion, comme tout hébergeur&nbsp;: voir
+                    <a href="https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">sa politique de confidentialité</a>.</p>
 
                 <h2>Formulaire de contact</h2>
                 <p>Si vous m'écrivez via le formulaire, votre nom, votre e-mail et votre message transitent par le
-                    service Formspree, uniquement pour me parvenir. Je les utilise seulement pour vous répondre.</p>
+                    service Formspree (société américaine), uniquement pour me parvenir. Je les utilise seulement pour
+                    vous répondre, et je les supprime au plus tard 12 mois après notre dernier échange.</p>
+
+                <h2>Qui reçoit ces données&nbsp;?</h2>
+                <ul>
+                    <li><strong>Cloudflare</strong> (société américaine) stocke les mesures anonymes&nbsp;;</li>
+                    <li><strong>Formspree</strong> (société américaine) me transmet les messages du formulaire&nbsp;;</li>
+                    <li><strong>GitHub</strong> (société américaine) héberge le site.</li>
+                </ul>
+                <p>Ces prestataires sont situés aux États-Unis&nbsp;: les transferts sont encadrés par les garanties
+                    prévues par le RGPD, selon leurs propres engagements. Je ne partage ces données avec personne d'autre.</p>
+
+                <h2>Vos droits</h2>
+                <p>Vous pouvez demander l'accès à vos données, leur rectification, leur effacement, ou vous opposer à
+                    leur utilisation, en écrivant à <a href="mailto:mathis.rouvreau@gmail.com">mathis.rouvreau@gmail.com</a>.
+                    Je vous réponds dans un délai d'un mois. Si vous estimez que vos droits ne sont pas respectés, vous
+                    pouvez saisir la <a href="https://www.cnil.fr/fr/plaintes" target="_blank" rel="noopener">CNIL</a>.</p>
+                <p>Comme les mesures d'audience sont anonymes, je ne peux pas retrouver les données d'une personne
+                    précise&nbsp;: le moyen de les refuser est le bouton ci-dessus.</p>
 
                 <h2>Une question&nbsp;?</h2>
-                <p>Écrivez-moi à <a href="mailto:mathis.rouvreau@gmail.com">mathis.rouvreau@gmail.com</a>.</p>
+                <p>Écrivez-moi à <a href="mailto:mathis.rouvreau@gmail.com">mathis.rouvreau@gmail.com</a>.
+                    Voir aussi les <a href="mentions-legales.html">mentions légales</a>.</p>
             </div>
         </div>
     </section>
@@ -148,7 +192,7 @@
             </div>
             <div class="footer__mega" data-split="chars" aria-hidden="true">MR VISUALS</div>
             <div class="footer__bottom">
-                <p class="footer__copy">&copy; 2026 MR VISUALS. Tous droits réservés. <a href="confidentialite.html">Confidentialité</a></p>
+                <p class="footer__copy">&copy; 2026 MR VISUALS. Tous droits réservés. <a href="mentions-legales.html">Mentions légales</a><a href="confidentialite.html">Confidentialité</a></p>
                 <div class="footer__socials">
                     <a href="https://www.instagram.com/mpict_rv12/" target="_blank" rel="noopener" aria-label="Instagram">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>

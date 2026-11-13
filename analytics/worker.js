@@ -72,9 +72,9 @@ export default {
         }
     },
 
-    // nettoyage quotidien : on ne garde que ~26 mois d'historique
+    // nettoyage quotidien : on ne garde que 25 mois d'historique (maximum admis par la CNIL pour une mesure sans consentement)
     async scheduled(_event, env, ctx) {
-        const limit = Math.floor(Date.now() / 1000) - 800 * 86400;
+        const limit = Math.floor(Date.now() / 1000) - 760 * 86400;
         ctx.waitUntil(env.DB.prepare('DELETE FROM hits WHERE ts < ?1').bind(limit).run());
     },
 };

@@ -20,13 +20,13 @@
     <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" type="image/png" href="images/brand/favicon.png">
     <link rel="apple-touch-icon" href="images/brand/favicon.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="preload" href="fonts/outfit-normal-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/cormorant-garamond-normal-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/style.css">
     <noscript><style>.reveal-on-scroll{opacity:1;transform:none}</style></noscript>
     <script type="application/ld+json">
-{
+    {
         "@context": "https://schema.org",
         "@graph": [
             {
@@ -36,95 +36,27 @@
                 "name": "MR VISUALS",
                 "inLanguage": "fr-FR",
                 "publisher": {
-                    "@id": "https://mrvisuals.fr/#business"
-                }
-            },
-            {
-                "@type": [
-                    "ProfessionalService",
-                    "LocalBusiness"
-                ],
-                "@id": "https://mrvisuals.fr/#business",
-                "name": "MR VISUALS",
-                "alternateName": "Mathis Rouvreau, photographe",
-                "description": "Photographe en Vendée : golf, portrait, danse et spectacle, automobile et nature.",
-                "url": "https://mrvisuals.fr/",
-                "image": "https://mrvisuals.fr/images/og.jpg",
-                "logo": "https://mrvisuals.fr/images/brand/favicon.png",
-                "email": "mathis.rouvreau@gmail.com",
-                "address": {
-                    "@type": "PostalAddress",
-                    "addressLocality": "Mortagne-sur-Sèvre",
-                    "addressRegion": "Vendée",
-                    "addressCountry": "FR"
-                },
-                "areaServed": [
-                    {
-                        "@type": "AdministrativeArea",
-                        "name": "Vendée"
-                    },
-                    {
-                        "@type": "AdministrativeArea",
-                        "name": "Pays de la Loire"
-                    }
-                ],
-                "founder": {
                     "@id": "https://mrvisuals.fr/#mathis"
-                },
-                "knowsAbout": [
-                    "Photographie de golf",
-                    "Photographie de portrait",
-                    "Photographie de danse et de spectacle",
-                    "Photographie automobile",
-                    "Photographie de nature"
-                ],
-                "makesOffer": [
-                    {
-                        "@type": "Offer",
-                        "itemOffered": {
-                            "@type": "Service",
-                            "name": "Séance photo de golf"
-                        }
-                    },
-                    {
-                        "@type": "Offer",
-                        "itemOffered": {
-                            "@type": "Service",
-                            "name": "Séance portrait en extérieur"
-                        }
-                    },
-                    {
-                        "@type": "Offer",
-                        "itemOffered": {
-                            "@type": "Service",
-                            "name": "Photographie de spectacle de danse"
-                        }
-                    },
-                    {
-                        "@type": "Offer",
-                        "itemOffered": {
-                            "@type": "Service",
-                            "name": "Photographie automobile"
-                        }
-                    }
-                ],
-                "sameAs": [
-                    "https://www.instagram.com/mpict_rv12/",
-                    "https://www.linkedin.com/in/mathis-rouvreau-aa6096305/"
-                ]
+                }
             },
             {
                 "@type": "Person",
                 "@id": "https://mrvisuals.fr/#mathis",
                 "name": "Mathis Rouvreau",
                 "jobTitle": "Photographe",
-                "worksFor": {
-                    "@id": "https://mrvisuals.fr/#business"
-                },
                 "url": "https://mrvisuals.fr/about.html",
                 "sameAs": [
                     "https://www.instagram.com/mpict_rv12/",
                     "https://www.linkedin.com/in/mathis-rouvreau-aa6096305/"
+                ],
+                "description": "Photographe passionné : golf, portrait, danse, automobile et nature.",
+                "image": "https://mrvisuals.fr/images/og.jpg",
+                "knowsAbout": [
+                    "Photographie de golf",
+                    "Photographie de portrait",
+                    "Photographie de danse et de spectacle",
+                    "Photographie automobile",
+                    "Photographie de nature"
                 ]
             }
         ]
@@ -264,10 +196,10 @@
                         </div>
                     </div>
                     <p class="intro__local reveal-on-scroll" style="--delay: 0.2s">
-                        Basé à <strong>Mortagne-sur-Sèvre</strong>, en Vendée, j'interviens dans tout le Grand Ouest&nbsp;:
+                        Basé à <strong>Mortagne-sur-Sèvre</strong>, en Vendée, je me déplace volontiers dans tout le Grand Ouest&nbsp;:
                         <a href="golf.html">clubs et compétitions de golf</a>, <a href="portrait.html">séances portrait</a>,
                         <a href="danse.html">spectacles de danse</a>, <a href="automobile.html">photographie automobile</a>.
-                        <a href="contact.html">Parlons de votre projet</a>.
+                        <a href="contact.html">Parlons de votre idée</a>.
                     </p>
                 </div>
             </div>
@@ -515,7 +447,7 @@
             </div>
             <div class="footer__mega" data-split="chars" aria-hidden="true">MR VISUALS</div>
             <div class="footer__bottom">
-                <p class="footer__copy">&copy; 2026 MR VISUALS. Tous droits réservés. <a href="confidentialite.html">Confidentialité</a></p>
+                <p class="footer__copy">&copy; 2026 MR VISUALS. Tous droits réservés. <a href="mentions-legales.html">Mentions légales</a><a href="confidentialite.html">Confidentialité</a></p>
                 <div class="footer__socials">
                     <a href="https://www.instagram.com/mpict_rv12/" target="_blank" rel="noopener" aria-label="Instagram">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>

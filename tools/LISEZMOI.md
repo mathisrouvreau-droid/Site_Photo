@@ -44,6 +44,17 @@ python tools/make_og_collections.py   # images de partage (WhatsApp, LinkedIn...
 python tools/build_collections.py     # pages + plan du site (sitemap.xml) + robots.txt
 ```
 
+## Voir le site sur son ordinateur
+
+```
+python tools/serve_local.py        # puis http://127.0.0.1:3000
+```
+Ce petit serveur n'est visible que depuis ton ordinateur et refuse les dossiers sensibles (mot de passe de l'admin). Ne pas utiliser `python -m http.server` à la racine du site.
+
+## Polices
+
+Les polices (Cormorant Garamond, Outfit) sont hébergées dans `fonts/` : aucun appel à Google. Pour les changer, modifier `tools/fetch_fonts.py` puis le relancer.
+
 ## Nom de domaine
 
 Le site est en ligne sur **https://mrvisuals.fr** (nom de domaine OVH, DNS vers GitHub Pages, fichier `CNAME` à la racine du dépôt : ne pas le supprimer).

@@ -44,20 +44,22 @@ Ouvre ensuite `https://mathisrouvreau-droid.github.io/Site_Photo/admin.html`.
 ## Tester en local (sans compte)
 ```bash
 cd analytics
-printf 'ADMIN_PASSWORD=essai\nHASH_SECRET=test\nALLOWED_ORIGINS=http://localhost:3000\n' > .dev.vars
+printf 'ADMIN_PASSWORD=essai\nHASH_SECRET=test\nALLOWED_ORIGINS=http://127.0.0.1:3000\n' > .dev.vars
 npm run db:local
 npm run dev                    # Worker sur http://localhost:8787
 # dans un autre terminal, à la racine du site :
-python -m http.server 3000     # puis http://localhost:3000/admin.html (mot de passe : essai)
+python tools/serve_local.py    # puis http://127.0.0.1:3000/admin.html (mot de passe : essai)
 ```
 En local, `js/config.js` envoie déjà les visites au Worker local.
+
+**Ne lance jamais `python -m http.server` à la racine du site** : il mettrait en ligne, pour tout le réseau local, le fichier `analytics/MOT-DE-PASSE.txt`. `tools/serve_local.py` ne répond que sur ton ordinateur et refuse ces fichiers.
 
 ## Vie privée
 - Pas de cookie, rien d'enregistré dans le navigateur du visiteur.
 - Le serveur lit l'adresse IP un instant (pour deviner pays / ville et fabriquer une empreinte), **sans jamais la stocker**.
   L'empreinte change chaque jour : impossible de suivre quelqu'un d'un jour à l'autre.
 - Le signal « Ne pas me suivre » (DNT) et Global Privacy Control sont respectés.
-- Les données sont supprimées automatiquement après ~26 mois.
+- Les données sont supprimées automatiquement après 25 mois (le maximum admis par la CNIL sans consentement).
 - La page `confidentialite.html` explique tout cela aux visiteurs.
 
 ## Fichiers

@@ -199,7 +199,8 @@ def build_sitemap(manifest):
     for col in pm.COLLECTIONS:
         photos = bg.sort_cat(col["cat"], [m for m in manifest if m["cat"] == col["cat"]])
         rows.append(entry(col["slug"] + ".html", "monthly", "0.8", photos[:8], lastmod=sc.LASTMOD_GALLERY))
-    rows += [entry("about.html", "yearly", "0.6"), entry("contact.html", "yearly", "0.7"), entry("confidentialite.html", "yearly", "0.3")]
+    rows += [entry("about.html", "yearly", "0.6"), entry("contact.html", "yearly", "0.7"), entry("confidentialite.html", "yearly", "0.3"),
+             entry("mentions-legales.html", "yearly", "0.2")]
     xml = ('<?xml version="1.0" encoding="UTF-8"?>\n'
            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n'
            + "\n".join(rows) + "\n</urlset>\n")
